@@ -16,10 +16,9 @@ Dockerfile
 # Documentación
 *.md
 
-# Variables de entorno locales
-.env
-.env.local
-.env.*.local
+# Variables de entorno (secretos)
+.env*
+!.env.example
 
 # Tests (no necesarios en producción)
 tests
