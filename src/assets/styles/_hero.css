@@ -11,9 +11,36 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: var(--bg-hero);
+  /* Gradiente light como base */
+  background: linear-gradient(135deg, #e8f0f8 0%, #f0f8ff 50%, #e6f7f9 100%);
   overflow: hidden;
   padding-top: 5rem;
+}
+
+/* Gradiente dark como capa superpuesta, animada con opacity.
+   CSS no puede transicionar valores de gradient, pero sí opacity. */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0f1117 0%, #141824 50%, #111620 100%);
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .hero::after {
+  opacity: 1;
+}
+
+body.theme-transition .hero::after {
+  transition: opacity 0.8s ease !important;
+}
+
+/* Asegurar que el contenido del hero esté por encima del ::after */
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-bg {

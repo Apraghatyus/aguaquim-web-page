@@ -32,7 +32,14 @@ import FooterSection from './components/FooterSection.vue'
 const isDark = ref(false)
 
 function toggleTheme() {
-  isDark.value = !isDark.value
+  // Activa transición suave en todos los elementos durante el cambio
+  document.body.classList.add('theme-transition')
+  // Fuerza un repaint para que el browser registre la clase de transición
+  // ANTES de cambiar las variables CSS del tema
+  requestAnimationFrame(() => {
+    isDark.value = !isDark.value
+    setTimeout(() => document.body.classList.remove('theme-transition'), 800)
+  })
 }
 
 watch(isDark, (val) => {
