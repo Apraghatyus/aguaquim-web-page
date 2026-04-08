@@ -1,0 +1,109 @@
+/*
+ * _signup.css - Sección de inscripción / llamado a la acción.
+ *
+ * Tarjeta grande con fondo primary, grid 2 columnas,
+ * blob radial decorativo, badge con backdrop-filter glassmorphism
+ * y breakpoints responsive.
+ */
+
+.signup-card {
+  background: var(--color-primary);
+  border-radius: var(--radius-2xl);
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.signup .section-label {
+  color: var(--color-secondary-light);
+}
+
+.signup-content h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.signup-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+
+.signup-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.signup-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+}
+
+.visual-blob {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(107, 204, 212, 0.3), transparent 70%);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.visual-badge {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+}
+
+.badge-icon {
+  font-size: 2rem;
+}
+
+.badge-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.badge-sub {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .signup-card {
+    grid-template-columns: 1fr;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .signup-actions {
+    justify-content: center;
+  }
+
+  .signup-visual {
+    display: none;
+  }
+
+  .signup-content h2 {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,20 @@
+# =============================================================================
+# Docker Compose - Producción
+#
+# Compila la app y la sirve con Nginx en una imagen ultra-ligera.
+# No incluye Node.js ni código fuente, solo los archivos estáticos
+# optimizados (HTML, CSS, JS minificados).
+#
+# Uso: docker compose -f docker-compose.prod.yml up --build
+# URL:  http://localhost (puerto 80)
+# =============================================================================
+
+services:
+  aguaquim-web:
+    build:
+      context: .            # Contexto de build: carpeta raíz del proyecto
+      target: production     # Usa el stage 'production' del Dockerfile (Nginx)
+    container_name: aguaquim-web-prod
+    ports:
+      - "80:80"              # Mapea puerto 80 (HTTP estándar) del contenedor al host
+    restart: unless-stopped  # Reinicia automáticamente si el contenedor se cae

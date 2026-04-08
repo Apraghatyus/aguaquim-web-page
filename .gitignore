@@ -1,0 +1,26 @@
+# Dependencias
+node_modules
+
+# Build de producción
+dist
+
+# Variables de entorno locales (pueden tener secretos)
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Tests
+coverage

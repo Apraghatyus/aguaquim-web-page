@@ -1,0 +1,32 @@
+/*
+ * main.css - Punto de entrada del sistema de estilos de AGUAQUIM.
+ *
+ * Importa todos los parciales en el orden correcto:
+ * 1. Variables / design tokens (colores, tipografía, espaciado, sombras)
+ * 2. Reset y estilos base del navegador
+ * 3. Layout (contenedores, secciones)
+ * 4. Tipografía compartida (labels, títulos)
+ * 5. Botones reutilizables
+ * 6. Patrones de tarjetas
+ * 7-13. Estilos específicos de cada componente/sección
+ *
+ * Los componentes .vue NO contienen <style>. Todos los estilos
+ * están centralizados en estos parciales CSS.
+ */
+
+/* ── Fundamentos ── */
+@import './_variables.css';
+@import './_base.css';
+@import './_layout.css';
+@import './_typography.css';
+@import './_buttons.css';
+@import './_cards.css';
+
+/* ── Componentes / Secciones ── */
+@import './_navbar.css';
+@import './_hero.css';
+@import './_about.css';
+@import './_services.css';
+@import './_coverage.css';
+@import './_signup.css';
+@import './_footer.css';

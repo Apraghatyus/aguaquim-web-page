@@ -1,0 +1,31 @@
+# Dependencias (se instalan dentro del contenedor)
+node_modules
+
+# Build local (se genera dentro del contenedor)
+dist
+
+# Git
+.git
+.gitignore
+
+# Docker (no necesarios dentro de la imagen)
+docker-compose*.yml
+Dockerfile
+.dockerignore
+
+# Documentación
+*.md
+
+# Variables de entorno locales
+.env
+.env.local
+.env.*.local
+
+# Tests (no necesarios en producción)
+tests
+coverage
+
+# Editor y OS
+.vscode
+.DS_Store
+Thumbs.db

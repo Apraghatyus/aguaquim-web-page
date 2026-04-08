@@ -1,0 +1,193 @@
+/*
+ * _navbar.css - Barra de navegación fija con glassmorphism.
+ *
+ * Layout del navbar, efecto de desenfoque al scroll,
+ * enlaces con subrayado animado, dark mode toggle,
+ * menú hamburguesa responsive y breakpoints.
+ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+  transition: background var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-slow);
+  border-bottom: 1px solid transparent;
+}
+
+.navbar.scrolled {
+  background: var(--bg-navbar);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: var(--border-light);
+}
+
+.navbar-container {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 36px;
+  transition: filter var(--transition-base);
+}
+
+.logo-text {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 2px;
+  transition: color var(--transition-base);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: 0.2px;
+  transition: color 0.25s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--transition-base);
+}
+
+.nav-links a:hover {
+  color: var(--color-primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--bg-tertiary);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.bar {
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all var(--transition-base);
+}
+
+.bar.active:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.bar.active:nth-child(2) { opacity: 0; }
+.bar.active:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar-container {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--bg-primary);
+    padding: 2rem;
+    gap: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: -1;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-links a {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .nav-links li {
+    padding: 1rem 0;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .navbar .btn--cta {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-text {
+    font-size: 1.1rem;
+  }
+}

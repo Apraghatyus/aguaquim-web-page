@@ -1,0 +1,28 @@
+/*
+ * _layout.css - Contenedores y estructura de secciones.
+ *
+ * Clases reutilizables para contenedores centrados y padding de secciones.
+ * Cada página/sección usa .container para mantener ancho consistente.
+ */
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+.section {
+  padding: var(--section-padding);
+}
+
+.section--alt {
+  background: var(--bg-secondary);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--section-header-mb);
+}

@@ -1,0 +1,53 @@
+/*
+ * _typography.css - Estilos tipográficos reutilizables.
+ *
+ * Define las clases compartidas entre múltiples secciones:
+ * labels, títulos, subtítulos, descripciones y texto con gradiente.
+ */
+
+.section-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-size: var(--font-size-4xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.section-desc {
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+}
+
+.section-desc strong {
+  color: var(--text-primary);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 900px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+}

@@ -1,0 +1,50 @@
+/*
+ * _base.css - Reset y estilos base globales.
+ *
+ * Normaliza el comportamiento por defecto del navegador,
+ * configura la fuente, colores de fondo, y estilos de elementos HTML.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+::selection {
+  background: var(--color-secondary);
+  color: #fff;
+}
+
+section {
+  transition: background var(--transition-base);
+}

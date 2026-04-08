@@ -1,0 +1,24 @@
+# =============================================================================
+# Docker Compose - Desarrollo
+#
+# Levanta el servidor Vite con hot-reload dentro de un contenedor Docker.
+# Los archivos locales se sincronizan con el contenedor mediante volúmenes,
+# así que cualquier cambio en el código se refleja instantáneamente.
+#
+# Uso: docker compose up --build
+# URL:  http://localhost:5173
+# =============================================================================
+
+services:
+  aguaquim-web:
+    build:
+      context: .          # Contexto de build: carpeta raíz del proyecto
+      target: dev          # Usa solo el stage 'dev' del Dockerfile (Node.js + Vite)
+    container_name: aguaquim-web-dev
+    ports:
+      - "5173:5173"        # Mapea puerto 5173 del contenedor al host
+    volumes:
+      - .:/app             # Sincroniza código local → contenedor (hot-reload)
+      - /app/node_modules  # Volumen anónimo: evita sobreescribir node_modules del contenedor
+    environment:
+      - NODE_ENV=development

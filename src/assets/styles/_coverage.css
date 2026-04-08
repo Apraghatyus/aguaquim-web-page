@@ -1,0 +1,101 @@
+/*
+ * _coverage.css - Sección de cobertura geográfica.
+ *
+ * Layout asimétrico (texto + grid de ciudades), estadística destacada,
+ * tarjetas de ciudad con icono de ubicación y breakpoints responsive.
+ */
+
+.coverage {
+  background: var(--bg-primary);
+}
+
+.coverage-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.coverage-desc {
+  margin-bottom: 2.5rem;
+}
+
+.coverage-stat {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-number {
+  font-size: var(--font-size-5xl);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: var(--font-size-base);
+  color: var(--text-tertiary);
+  line-height: 1.3;
+}
+
+.cities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.city-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-secondary);
+  padding: 1.3rem 1.5rem;
+  border-radius: var(--radius-md);
+}
+
+.city-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 102, 204, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .city-icon {
+  background: rgba(0, 102, 204, 0.15);
+}
+
+.city-card h3 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.1rem;
+}
+
+.city-card p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 900px) {
+  .coverage-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .coverage-stat {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .cities-grid {
+    grid-template-columns: 1fr;
+  }
+}

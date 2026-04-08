@@ -1,0 +1,44 @@
+/*
+ * _cards.css - Patrones compartidos de tarjetas.
+ *
+ * Hover lift, bordes, sombras y transiciones que se repiten
+ * en value-card, city-card, service-card, etc.
+ */
+
+.card-base {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-light);
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base),
+              border-color var(--transition-base);
+}
+
+.card-base:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-primary);
+}
+
+.card-base--lift-sm:hover {
+  transform: translateY(-3px);
+}
+
+.card-base--lift-md:hover {
+  transform: translateY(-4px);
+}
+
+.card-base--lift-lg:hover {
+  transform: translateY(-6px);
+}
+
+/* Badge pill (ej: "Popular") */
+.card-badge {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+}
