@@ -27,7 +27,12 @@
         <div class="footer-brand">
           <div class="footer-logo">
             <img src="/favicon.svg" alt="AGUAQUIM" class="footer-logo-img" />
-            <span>AGUAQUIM</span>
+            <div class="logo-brand">
+              <span class="logo-text">
+                <span class="logo-agua">AGUA</span><span class="logo-quim">QUIM</span>
+              </span>
+              <span class="logo-subtitle">LABORATORIO</span>
+            </div>
           </div>
           <p class="footer-tagline">Laboratorio de Análisis de Agua</p>
           <p class="footer-desc">

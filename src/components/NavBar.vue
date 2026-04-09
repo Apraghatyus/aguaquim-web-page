@@ -18,7 +18,12 @@
     <div class="navbar-container">
       <a href="#" class="navbar-logo">
         <img src="/favicon.svg" alt="AGUAQUIM" class="logo-img" />
-        <span class="logo-text">AGUAQUIM</span>
+        <div class="logo-brand">
+          <span class="logo-text">
+            <span class="logo-agua">AGUA</span><span class="logo-quim">QUIM</span>
+          </span>
+          <span class="logo-subtitle">LABORATORIO</span>
+        </div>
       </a>
 
       <!-- Links de navegación - en móvil se muestran a pantalla completa -->

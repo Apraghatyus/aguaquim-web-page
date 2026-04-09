@@ -26,14 +26,26 @@
 }
 
 .footer-logo-img {
-  height: 32px;
+  margin-top: -5px;
+  height: 50px;
 }
 
 .footer-logo span {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 2px;
+  /* Ya no se usa el span genérico, la marca usa .logo-brand */
+}
+
+/* Brand typography en footer: hereda los mismos estilos del navbar
+   pero adapta colores para fondo oscuro */
+.footer-brand .logo-agua {
+  color: #7BBFE8;
+}
+
+.footer-brand .logo-quim {
+  color: #8CD8DE;
+}
+
+.footer-brand .logo-subtitle {
+  color: #9AB8C2;
 }
 
 .footer-tagline {

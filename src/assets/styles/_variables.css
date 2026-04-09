@@ -10,6 +10,26 @@
 
 /* Tipografía Inter: pesos 300-900 */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* Tipografía marca: fuentes originales del logo AGUAQUIM (self-hosted) */
+@font-face {
+  font-family: 'Iwata UD Gothic';
+  src: url('../fonts/iwata-gothic-old-pro-heavy.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ultine Cond';
+  src: url('../fonts/Ultine-NorReg.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Segoe TV';
+  src: url('../fonts/SegoeTVRegular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* ── Colores de marca ── */
@@ -25,6 +45,14 @@
 
   /* ── Tipografía ── */
   --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-brand-agua: 'Iwata UD Gothic', 'Arial Black', sans-serif;
+  --font-brand-quim: 'Ultine Cond', 'Arial Narrow', sans-serif;
+  --font-brand-lab: 'Segoe TV', 'Trebuchet MS', sans-serif;
+
+  /* ── Colores de marca (logo) ── */
+  --brand-agua: #0B4F82;
+  --brand-quim: #5ABBC4;
+  --brand-lab: #4A5560;
   --font-size-xs: 0.72rem;
   --font-size-sm: 0.8rem;
   --font-size-base: 0.9rem;
@@ -86,6 +114,10 @@
 
 /* ── Tema oscuro ── */
 [data-theme="dark"] {
+  --brand-agua: #7BBFE8;
+  --brand-quim: #8CD8DE;
+  --brand-lab: #9AB8C2;
+
   --bg-primary: #0D1B22;
   --bg-secondary: #132A33;
   --bg-tertiary: #1A3440;

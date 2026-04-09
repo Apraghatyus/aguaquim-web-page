@@ -41,15 +41,56 @@
 }
 
 .logo-img {
-  height: 36px;
+  margin-top: -5px;
+  height: 50px;
   transition: filter var(--transition-base);
 }
 
+/* ── Brand typography (AGUA + QUIM + LABORATORIO) ── */
+.logo-brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
 .logo-text {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: 2px;
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.logo-agua {
+  font-family: var(--font-brand-agua);
+  font-weight: normal;
+  font-size: 1.3rem;
+  color: var(--brand-agua);
+  letter-spacing: 1.2px;
+  transform: scaleX(0.90) scaleY(1.1);
+  transform-origin: left;
+  -webkit-text-stroke: 0;
+  transition: color var(--transition-base);
+}
+
+.logo-quim {
+  font-family: var(--font-brand-quim);
+  font-weight: normal;
+  font-size: 1.3rem;
+  color: var(--brand-quim);
+  letter-spacing: 1.2px;
+  transform: scaleX(0.90) scaleY(1.1);
+  transform-origin: left;
+  margin-left: -7px;
+  transition: color var(--transition-base);
+}
+
+.logo-subtitle {
+  font-family: var(--font-brand-lab);
+  font-weight: normal;
+  font-size: 0.59rem;
+  color: var(--brand-lab);
+  letter-spacing: 0.58em;
+  margin-top: 3px;
+  text-transform: uppercase;
   transition: color var(--transition-base);
 }
 
@@ -197,7 +238,13 @@
     display: none;
   }
 
-  .logo-text {
+  .logo-agua,
+  .logo-quim {
     font-size: 1.1rem;
+  }
+
+  .logo-subtitle {
+    font-size: 0.4rem;
+    letter-spacing: 0.42em;
   }
 }
