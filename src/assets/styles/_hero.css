@@ -172,6 +172,9 @@ body.theme-transition .hero::after {
   object-fit: cover;              /* La imagen cubre el área sin deformarse (recorta si es necesario) */
   opacity: 0;                     /* Invisible por defecto */
   transition: opacity 1.2s ease;  /* Transición suave de 1.2s para el crossfade */
+  /* Degradado inferior: 80% visible, luego se desvanece al fondo */
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
 
 /* La imagen activa se hace visible */

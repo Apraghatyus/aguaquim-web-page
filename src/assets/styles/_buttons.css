@@ -44,6 +44,8 @@
   border-color: var(--color-primary); /* Borde se vuelve azul */
   color: var(--color-primary);        /* Texto azul */
   background: rgba(44, 104, 123, 0.04); /* Fondo azul casi invisible */
+  transform: translateY(-2px);       /* Se eleva 2px (efecto lift) */
+  box-shadow: 0 8px 24px rgba(44, 104, 123, 0.15); /* Sombra difusa con tinte primario */
 }
 
 /* ── CTA: botón compacto para el navbar ── */
@@ -57,8 +59,8 @@
 
 .btn--cta:hover {
   background: var(--color-primary-dark);
-  transform: translateY(-1px);       /* Lift más sutil (1px) */
-  box-shadow: 0 4px 16px rgba(44, 104, 123, 0.3);
+  transform: translateY(-2px);       /* Se eleva 2px (efecto lift) */
+  box-shadow: 0 8px 24px rgba(44, 104, 123, 0.3); /* Sombra difusa con tinte primario */
 }
 
 /* ── Link: botón como texto con flecha ── */
@@ -99,8 +101,8 @@
 
 .btn--wa:hover {
   background: var(--color-whatsapp-dark); /* Verde más oscuro */
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3); /* Sombra verde */
+  transform: translateY(-2px);       /* Se eleva 2px (efecto lift) */
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3); /* Sombra difusa con tinte verde */
 }
 
 /* ── Email: botón glassmorphism sobre fondo oscuro (footer/signup) ── */
@@ -115,7 +117,8 @@
 
 .btn--email:hover {
   background: rgba(255, 255, 255, 0.25); /* Más opaco al hover */
-  transform: translateY(-2px);
+  transform: translateY(-2px);       /* Se eleva 2px (efecto lift) */
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* Sombra difusa con tinte blanco */
 }
 
 /* ══════════════════════════════════════════

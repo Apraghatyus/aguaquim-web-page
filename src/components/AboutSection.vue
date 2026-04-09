@@ -33,14 +33,17 @@
       <div class="about-content">
         <div class="about-text">
           <p class="lead">
-            <strong>AGUAQUIM</strong> es un laboratorio especializado en el análisis
-            fisicoquímico y microbiológico de agua, comprometido con la
-            precisión y calidad en cada muestra.
+            Somos una empresa 100% colombiana conformada por un equipo de
+            profesionales en Química, Ingeniería Química, Agrícola y Agronomía,
+            comprometidos con una excelente calidad en la prestación de nuestros
+            servicios, los cuales están basados en los requerimientos establecidos
+            por las normas colombianas.
           </p>
           <p>
-            Brindamos soluciones analíticas para garantizar que el agua cumpla
-            con los estándares de calidad exigidos por la normatividad colombiana,
-            aportando confianza y tranquilidad a nuestros clientes.
+            Contamos con personal idóneo e infraestructura adecuada para
+            garantizar la confiabilidad y trazabilidad en los resultados de los
+            análisis, estamos comprometidos con la mejora continua, la calidad
+            y el medio ambiente.
           </p>
           <a href="#inscribete" class="btn btn--link">
             Inscríbete con nosotros
