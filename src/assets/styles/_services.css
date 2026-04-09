@@ -1,23 +1,101 @@
 /*
  * _services.css - Sección de servicios del laboratorio.
  *
- * Grid 3 columnas de tarjetas, iconos con fondo coloreado,
- * tarjeta featured con borde primary, lista de parámetros
- * y breakpoints responsive.
+ * Carrusel horizontal infinito en desktop/tablet con pause-on-hover.
+ * Stack vertical en mobile (≤ 768px).
  * Las clases .card-* se scopean bajo .service-card para evitar colisiones.
  */
 
-/* ── Grid de tarjetas de servicio (3 columnas) ── */
-.services-grid {
-  display: grid;                     /* Layout en grid */
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+/* ── Carrusel: contenedor principal (sin mask para que las pestañas sean visibles) ── */
+.services-carousel {
+  overflow: visible;                 /* Permite que las flechas y sombras se vean */
+  width: 100%;                       /* Ancho completo de la página */
+  padding: 0;                        /* Sin padding propio, el viewport maneja el espacio */
+  position: relative;                /* Contexto para las zonas de control y flechas */
+}
+
+/* ── Viewport: aplica el mask-image y recorta solo horizontalmente ── */
+.carousel-viewport {
+  overflow: clip;                    /* Recorta horizontal sin afectar el hover vertical */
+  overflow-clip-margin: 20px;        /* Margen extra para sombras y lift del hover */
+  padding: 1.5rem 0;                 /* Espacio vertical para hover lift + box-shadow */
+  mask-image: linear-gradient(       /* Desvanece los bordes: solo ~3 cards visibles */
+    to right,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+}
+
+/* ── Track: fila de tarjetas que se desplaza con JS ── */
+.services-track {
+  display: flex;                     /* Tarjetas en fila horizontal */
   gap: 1.5rem;                       /* Espacio entre tarjetas */
+  width: max-content;                /* Se expande al ancho total de las tarjetas */
+  will-change: transform;            /* Pista al browser para optimizar repaint */
+}
+
+/* ── Zonas de control izquierda/derecha (invisibles, solo para cursor) ── */
+.services-carousel .carousel-zone {
+  position: absolute;                /* Sobre el carrusel */
+  top: 0;
+  bottom: 0;
+  width: 18%;                        /* Coincide con el mask-image fade */
+  z-index: 2;                        /* Sobre las tarjetas */
+  cursor: pointer;
+}
+
+.carousel-zone--left {
+  left: 0;
+}
+
+.carousel-zone--right {
+  right: 0;
+}
+
+/* ── Flechas indicadoras de dirección ── */
+.carousel-tab {
+  position: absolute;                /* Sobre el carrusel */
+  top: 50%;                          /* Centrada verticalmente */
+  transform: translateY(-50%);
+  z-index: 3;                        /* Sobre las zonas de control */
+  background: none;                  /* Sin fondo */
+  border: none;                      /* Sin borde */
+  color: var(--text-secondary);      /* Color del ícono */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.35;                     /* Sutil por defecto */
+  transition: opacity 0.3s, color 0.3s;
+  pointer-events: none;              /* No intercepta clicks (la zona debajo lo hace) */
+  padding: 0;
+}
+
+.carousel-tab--left {
+  left: 1rem;
+}
+
+.carousel-tab--right {
+  right: 1rem;
+}
+
+/* Flecha activa: se ilumina cuando el mouse está en esa zona */
+.carousel-tab.active {
+  opacity: 1;
+  color: var(--color-primary);       /* Azul primario */
 }
 
 /* ── Tarjeta de servicio individual ── */
 .service-card {
+  min-width: 340px;                  /* Ancho fijo para cada tarjeta */
+  max-width: 340px;
+  flex-shrink: 0;                    /* No se encoge dentro del flex */
   padding: 2.5rem 2rem;             /* Espacio interno generoso */
   position: relative;                /* Contexto para posibles badges absolutos */
+  display: flex;                     /* Layout vertical interno */
+  flex-direction: column;            /* Contenido apilado */
 }
 
 /* Tarjeta destacada (ej: servicio más popular) */
@@ -98,14 +176,18 @@
    RESPONSIVE BREAKPOINTS
    ══════════════════════════════════════════ */
 
+/* ── Mobile: carrusel visible, stack oculto en desktop/tablet ── */
+
+/* El stack mobile está oculto por defecto */
+.services-mobile {
+  display: none;
+}
+
 /* ── Tablet landscape (≤ 1024px) ── */
 @media (max-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
-    gap: 1.2rem;                     /* Gap reducido */
-  }
-
   .service-card {
+    min-width: 300px;                /* Tarjetas un poco más angostas */
+    max-width: 300px;
     padding: 2rem 1.5rem;            /* Padding reducido */
   }
 
@@ -116,13 +198,23 @@
 
 /* ── Mobile portrait (≤ 768px) ── */
 @media (max-width: 768px) {
-  .services-grid {
-    grid-template-columns: 1fr;      /* Una sola columna */
+  /* Oculta el carrusel en mobile */
+  .services-carousel {
+    display: none;
+  }
+
+  /* Muestra el stack vertical */
+  .services-mobile {
+    display: flex;                   /* Tarjetas apiladas verticalmente */
+    flex-direction: column;
+    gap: 1.2rem;
     max-width: 460px;                /* Ancho máximo para no estirar demasiado */
     margin: 0 auto;                  /* Centrado */
   }
 
-  .service-card {
+  .services-mobile .service-card {
+    min-width: unset;                /* Quita el ancho fijo del carrusel */
+    max-width: unset;
     padding: 1.8rem 1.3rem;
   }
 

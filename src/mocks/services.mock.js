@@ -44,6 +44,42 @@ const RAW_SERVICES = [
       'Coliformes totales y E. coli',
       'Cálculo del índice IRCA'
     ]
+  },
+  {
+    id: 4,
+    icon: '🏊‍♂️',
+    title: 'Capacitación Operarios de Piscina',
+    description: 'Formación técnica para el manejo seguro y eficiente de sistemas de tratamiento de agua en piscinas.',
+    items: [
+      'Normatividad sanitaria',
+      'Dosificación de químicos',
+      'Mantenimiento preventivo',
+      'Protocolos de emergencia'
+    ]
+  },
+  {
+    id: 5,
+    icon: '🪣',
+    title: 'Capacitación Lavado de Tanques',
+    description: 'Entrenamiento en procedimientos de limpieza y desinfección de tanques de almacenamiento de agua.',
+    items: [
+      'Protocolos de limpieza',
+      'Desinfección certificada',
+      'Toma de muestras',
+      'Registro y trazabilidad'
+    ]
+  },
+  {
+    id: 6,
+    icon: '🌿',
+    title: 'Asesorías de Jardinería',
+    description: 'Consultoría especializada en riego, sustratos y manejo del agua para el cuidado de jardines y zonas verdes.',
+    items: [
+      'Análisis de suelo y agua',
+      'Sistemas de riego eficiente',
+      'Fertilización y sustratos',
+      'Manejo integrado de plagas'
+    ]
   }
 ]
 

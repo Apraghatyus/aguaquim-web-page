@@ -3,14 +3,13 @@
  *
  * Elementos animados:
  *   .services .section-header → Label, título y subtítulo de la sección
- *   .service-card             → Las 3 tarjetas de servicio (Piscina, Potable, IRCA)
+ *   .services-carousel         → El carrusel completo aparece con fadeIn
+ *   .services-mobile .service-card → Tarjetas en mobile (stack) con batchIn
  *
  * Comportamiento:
  *   1. El header aparece primero con fadeIn individual
- *   2. Las tarjetas aparecen como grupo escalonado (batchIn con stagger 0.1s)
- *      Es decir, cuando el grupo entra al viewport, aparecen una tras otra
- *      con 100ms de diferencia. Esto funciona bien en grid de 3 columnas
- *      porque todas están a la misma altura.
+ *   2. El carrusel aparece como bloque entero (fadeIn)
+ *   3. En mobile, las tarjetas apiladas aparecen escalonadas (batchIn)
  *
  * Integración:
  *   Se llama desde ServicesSection.vue → onMounted → setupServicesAnimations(anim)
@@ -21,6 +20,9 @@ export function setupServicesAnimations({ fadeIn, batchIn }) {
   // Header de la sección (label + título + subtítulo)
   fadeIn('.services .section-header')
 
-  // Tarjetas de servicio: grupo escalonado con stagger
-  batchIn('.service-card', { stagger: 0.1 })
+  // Carrusel: aparece como bloque entero
+  fadeIn('.services-carousel')
+
+  // Mobile: tarjetas apiladas con stagger escalonado
+  batchIn('.services-mobile .service-card', { stagger: 0.1 })
 }

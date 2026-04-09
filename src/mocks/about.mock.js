@@ -11,18 +11,13 @@ import { createCompanyValueList } from '../models/CompanyValue.js'
 const RAW_VALUES = [
   {
     id: 1,
-    title: 'Precisión',
-    desc: 'Resultados confiables respaldados por métodos estandarizados y equipos calibrados.'
+    title: 'Misión',
+    desc: 'Brindar servicios analíticos de alta calidad con resultados confiables y trazables bajo la NTC 17025, con tecnología de vanguardia, talento colombiano y compromiso con la Responsabilidad Social.'
   },
   {
     id: 2,
-    title: 'Calidad',
-    desc: 'Compromiso con los más altos estándares del sector y la normatividad colombiana.'
-  },
-  {
-    id: 3,
-    title: 'Servicio',
-    desc: 'Atención personalizada y acompañamiento continuo a cada uno de nuestros clientes.'
+    title: 'Visión',
+    desc: 'Ser líderes en servicios de laboratorio mediante la excelencia continua, tecnología de punta y un equipo humano motivado, siendo ejemplo de desarrollo sustentable y Responsabilidad Social.'
   }
 ]
 

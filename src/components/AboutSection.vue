@@ -4,8 +4,7 @@
   Presenta al laboratorio AGUAQUIM con:
   - Descripción de la empresa y su misión
   - Link de inscripción con icono animado
-  - Tarjetas numeradas (01, 02, 03) con los valores:
-    Precisión, Calidad y Servicio
+  - Tarjetas numeradas (01, 02) con Misión y Visión
 
   Layout de 2 columnas: texto a la izquierda, valores a la derecha.
 
