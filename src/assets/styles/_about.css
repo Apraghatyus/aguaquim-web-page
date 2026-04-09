@@ -71,8 +71,38 @@
   line-height: 1.6;
 }
 
-@media (max-width: 900px) {
+/* ── Tablet landscape (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  .about-content {
+    gap: 2.5rem;
+  }
+
+  .about-text .lead {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* ── Mobile portrait (≤ 768px) ── */
+@media (max-width: 768px) {
   .about-content {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-text .lead {
+    font-size: var(--font-size-base);
+  }
+
+  .about-text p {
+    font-size: var(--font-size-base);
+  }
+
+  .value-card {
+    padding: 1.3rem;
+    gap: 1rem;
+  }
+
+  .value-number {
+    font-size: 1.5rem;
   }
 }

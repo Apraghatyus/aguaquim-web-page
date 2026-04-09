@@ -55,7 +55,7 @@
 .visual-blob {
   width: 280px;
   height: 280px;
-  background: radial-gradient(circle, rgba(107, 204, 212, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(140, 199, 196, 0.3), transparent 70%);
   border-radius: 50%;
   position: absolute;
 }
@@ -88,15 +88,43 @@
   font-size: 0.85rem;
 }
 
-@media (max-width: 900px) {
+/* ── Tablet landscape (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  .signup-card {
+    padding: 3rem 2.5rem;
+    gap: 2rem;
+  }
+
+  .signup-content h2 {
+    font-size: 2rem;
+  }
+
+  .signup-desc {
+    font-size: var(--font-size-base);
+  }
+
+  .visual-blob {
+    width: 220px;
+    height: 220px;
+  }
+
+  .visual-badge {
+    padding: 1.2rem 1.5rem;
+  }
+}
+
+/* ── Mobile portrait (≤ 768px) ── */
+@media (max-width: 768px) {
   .signup-card {
     grid-template-columns: 1fr;
-    padding: 3rem 2rem;
+    padding: 2.5rem 1.5rem;
     text-align: center;
   }
 
   .signup-actions {
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .signup-visual {
@@ -104,6 +132,10 @@
   }
 
   .signup-content h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
+  }
+
+  .signup-desc {
+    font-size: var(--font-size-sm);
   }
 }

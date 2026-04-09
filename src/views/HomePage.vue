@@ -17,6 +17,11 @@
 </template>
 
 <script setup>
+/**
+ * HomePage solo ensambla secciones.
+ * Cada componente gestiona sus propias animaciones internamente
+ * importando su módulo desde src/animations/.
+ */
 import HeroSection from '../components/HeroSection.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ServicesSection from '../components/ServicesSection.vue'

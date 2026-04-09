@@ -62,11 +62,21 @@
 </template>
 
 <script setup>
+import { onMounted, nextTick } from 'vue'
 import { useAbout } from '../hooks/useAbout.js'
+import { useScrollAnimations } from '../hooks/useScrollAnimations.js'
+import { setupAboutAnimations } from '../animations'
 
 /**
  * Consume los valores/pilares de la empresa desde el composable.
  * Se muestran como tarjetas numeradas (01, 02, 03).
  */
 const { values, loading, error } = useAbout()
+
+/**
+ * Inicializa las animaciones de la sección About.
+ * Header y texto aparecen primero, luego cada value-card individual.
+ */
+const anim = useScrollAnimations()
+onMounted(() => nextTick(() => setupAboutAnimations(anim)))
 </script>

@@ -84,7 +84,10 @@
 </template>
 
 <script setup>
+import { onMounted, nextTick } from 'vue'
 import { useContact } from '../hooks/useContact.js'
+import { useScrollAnimations } from '../hooks/useScrollAnimations.js'
+import { setupFooterAnimations } from '../animations'
 
 // Año actual calculado dinámicamente para el copyright del footer
 const currentYear = new Date().getFullYear()
@@ -94,4 +97,11 @@ const currentYear = new Date().getFullYear()
  * El teléfono y correo se renderizan dinámicamente.
  */
 const { contact } = useContact()
+
+/**
+ * Inicializa las animaciones del footer.
+ * Usa revealOnce: aparece al scroll, permanece visible al llegar al fondo.
+ */
+const anim = useScrollAnimations()
+onMounted(() => nextTick(() => setupFooterAnimations(anim)))
 </script>

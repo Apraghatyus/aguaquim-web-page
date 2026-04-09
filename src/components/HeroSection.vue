@@ -73,3 +73,16 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { onMounted, nextTick } from 'vue'
+import { useScrollAnimations } from '../hooks/useScrollAnimations.js'
+import { setupHeroAnimations } from '../animations'
+
+/**
+ * Inicializa las animaciones del hero al montar el componente.
+ * Se usa nextTick para asegurar que el DOM ya está renderizado.
+ */
+const anim = useScrollAnimations()
+onMounted(() => nextTick(() => setupHeroAnimations(anim)))
+</script>

@@ -65,7 +65,10 @@
 </template>
 
 <script setup>
+import { onMounted, nextTick } from 'vue'
 import { useServices } from '../hooks/useServices.js'
+import { useScrollAnimations } from '../hooks/useScrollAnimations.js'
+import { setupServicesAnimations } from '../animations'
 
 /**
  * Consume los servicios del laboratorio desde el composable.
@@ -74,4 +77,11 @@ import { useServices } from '../hooks/useServices.js'
  * Si no, se usan los datos estáticos de fallback.
  */
 const { services, loading, error } = useServices()
+
+/**
+ * Inicializa las animaciones de la sección Servicios.
+ * Header primero, luego tarjetas con stagger escalonado.
+ */
+const anim = useScrollAnimations()
+onMounted(() => nextTick(() => setupServicesAnimations(anim)))
 </script>

@@ -136,13 +136,25 @@
 .bar.active:nth-child(2) { opacity: 0; }
 .bar.active:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-@media (max-width: 900px) {
-  .menu-toggle {
-    display: flex;
-  }
-
+/* ── Tablet landscape (≤ 1024px) ── */
+@media (max-width: 1024px) {
   .navbar-container {
     padding: 1rem 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+}
+
+/* ── Mobile portrait (≤ 768px) ── */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
   }
 
   .nav-links {
@@ -184,9 +196,7 @@
   .navbar .btn--cta {
     display: none;
   }
-}
 
-@media (max-width: 600px) {
   .logo-text {
     font-size: 1.1rem;
   }

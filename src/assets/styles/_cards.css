@@ -37,7 +37,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: var(--color-primary);
+  background: var(--color-accent);
   color: #fff;
   padding: 0.3rem 0.8rem;
   border-radius: var(--radius-full);
