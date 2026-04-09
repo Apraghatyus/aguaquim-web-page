@@ -8,21 +8,28 @@
  * El dark mode sobreescribe las variables de tema.
  */
 
-/* Tipografía Inter: pesos 300-900 */
+/* Tipografía Inter: pesos 300-900, fuente principal de toda la UI */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-/* Tipografía marca: fuentes originales del logo AGUAQUIM (self-hosted) */
+
+/* ── Fuentes de marca (self-hosted, archivos .woff2 locales) ── */
+
+/* Iwata UD Gothic: fuente del texto "AGUA" en el logo */
 @font-face {
-  font-family: 'Iwata UD Gothic';
-  src: url('../fonts/iwata-gothic-old-pro-heavy.woff2') format('woff2');
-  font-weight: normal;
-  font-display: swap;
+  font-family: 'Iwata UD Gothic';                                /* Nombre para referenciar con var(--font-brand-agua) */
+  src: url('../fonts/iwata-gothic-old-pro-heavy.woff2') format('woff2'); /* Archivo local .woff2 */
+  font-weight: normal;                                            /* La fuente ya es heavy, no necesita bold extra */
+  font-display: swap;                                             /* Muestra texto del sistema mientras carga la fuente */
 }
+
+/* Ultine Cond: fuente del texto "QUIM" en el logo */
 @font-face {
   font-family: 'Ultine Cond';
   src: url('../fonts/Ultine-NorReg.woff2') format('woff2');
   font-weight: normal;
   font-display: swap;
 }
+
+/* Segoe TV: fuente del texto "LABORATORIO" en el logo */
 @font-face {
   font-family: 'Segoe TV';
   src: url('../fonts/SegoeTVRegular.woff2') format('woff2');
@@ -32,112 +39,125 @@
 }
 
 :root {
-  /* ── Colores de marca ── */
-  --color-primary: #2C687B;
-  --color-primary-dark: #1E4D5E;
-  --color-secondary: #8CC7C4;
-  --color-secondary-light: #B5DEDA;
-  --color-accent: #2D8B4E;
-  --color-accent-dark: #236B3C;
-  --color-whatsapp: #25d366;
-  --color-whatsapp-dark: #1fb855;
-  --color-success: #48bb78;
+  /* ── Colores de marca (paleta Verde Jardín) ── */
+  --color-primary: #2C687B;           /* Azul petróleo: color principal de la marca */
+  --color-primary-dark: #1E4D5E;      /* Variante oscura para hovers de botones */
+  --color-secondary: #8CC7C4;         /* Turquesa claro: color de acentuación suave */
+  --color-secondary-light: #B5DEDA;   /* Turquesa aún más claro para fondos sutiles */
+  --color-accent: #2D8B4E;            /* Verde bosque: acento para badges y detalles */
+  --color-accent-dark: #236B3C;       /* Verde oscuro para hovers del acento */
+  --color-whatsapp: #25d366;          /* Verde oficial de WhatsApp */
+  --color-whatsapp-dark: #1fb855;     /* WhatsApp hover */
+  --color-success: #48bb78;           /* Verde de éxito/confirmación */
 
   /* ── Tipografía ── */
-  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-brand-agua: 'Iwata UD Gothic', 'Arial Black', sans-serif;
-  --font-brand-quim: 'Ultine Cond', 'Arial Narrow', sans-serif;
-  --font-brand-lab: 'Segoe TV', 'Trebuchet MS', sans-serif;
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif; /* Stack de fuentes principal con fallbacks del sistema */
+  --font-brand-agua: 'Iwata UD Gothic', 'Arial Black', sans-serif; /* Fuente para "AGUA" con fallback bold */
+  --font-brand-quim: 'Ultine Cond', 'Arial Narrow', sans-serif;   /* Fuente para "QUIM" con fallback condensado */
+  --font-brand-lab: 'Segoe TV', 'Trebuchet MS', sans-serif;       /* Fuente para "LABORATORIO" con fallback */
 
-  /* ── Colores de marca (logo) ── */
-  --brand-agua: #0B4F82;
-  --brand-quim: #5ABBC4;
-  --brand-lab: #4A5560;
-  --font-size-xs: 0.72rem;
-  --font-size-sm: 0.8rem;
-  --font-size-base: 0.9rem;
-  --font-size-md: 0.95rem;
-  --font-size-lg: 1.05rem;
-  --font-size-xl: 1.15rem;
-  --font-size-2xl: 1.25rem;
-  --font-size-3xl: 2.5rem;
-  --font-size-4xl: 2.8rem;
-  --font-size-5xl: 3.5rem;
-  --font-size-6xl: 4rem;
+  /* ── Colores del logo (texto) ── */
+  --brand-agua: #0B4F82;              /* Azul oscuro para el texto "AGUA" */
+  --brand-quim: #5ABBC4;             /* Turquesa para el texto "QUIM" */
+  --brand-lab: #4A5560;              /* Gris azulado para "LABORATORIO" */
 
-  /* ── Espaciado (secciones) ── */
-  --section-padding: 7rem 2rem;
-  --section-header-mb: 4rem;
+  /* ── Escala tipográfica (7 pasos) ──
+     Desde xs (~11px) hasta 6xl (~64px) */
+  --font-size-xs: 0.72rem;           /* Extra pequeño: pills, labels mínimos */
+  --font-size-sm: 0.8rem;            /* Pequeño: labels de sección, metadata */
+  --font-size-base: 0.9rem;          /* Base: texto de cuerpo, listas */
+  --font-size-md: 0.95rem;           /* Medio: botones, links */
+  --font-size-lg: 1.05rem;           /* Grande: descripciones destacadas */
+  --font-size-xl: 1.15rem;           /* Extra grande: subtítulos, leads */
+  --font-size-2xl: 1.25rem;          /* 2x grande: títulos de tarjetas */
+  --font-size-3xl: 2.5rem;           /* 3x grande: títulos de secciones CTA */
+  --font-size-4xl: 2.8rem;           /* 4x grande: títulos de secciones */
+  --font-size-5xl: 3.5rem;           /* 5x grande: números estadísticos */
+  --font-size-6xl: 4rem;             /* 6x grande: título hero (desktop) */
+
+  /* ── Espaciado de secciones ── */
+  --section-padding: 7rem 2rem;      /* Padding vertical generoso + horizontal moderado */
+  --section-header-mb: 4rem;         /* Margen inferior del encabezado de cada sección */
 
   /* ── Contenedores ── */
-  --container-max: 1200px;
-  --container-wide: 1280px;
+  --container-max: 1200px;           /* Ancho máximo estándar */
+  --container-wide: 1280px;          /* Ancho máximo amplio (hero, navbar) */
 
   /* ── Radios de borde ── */
-  --radius-sm: 12px;
-  --radius-md: 14px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-  --radius-2xl: 28px;
-  --radius-full: 50px;
+  --radius-sm: 12px;                 /* Sutil: iconos, pills */
+  --radius-md: 14px;                 /* Medio: tarjetas de ciudad */
+  --radius-lg: 16px;                 /* Grande: tarjetas de servicio */
+  --radius-xl: 20px;                 /* Extra grande: tarjetas principales */
+  --radius-2xl: 28px;               /* 2x grande: la tarjeta de signup */
+  --radius-full: 50px;              /* Completamente redondo: botones pill */
 
   /* ── Transiciones ── */
-  --transition-fast: 0.2s ease;
-  --transition-base: 0.3s ease;
-  --transition-slow: 0.4s ease;
+  --transition-fast: 0.2s ease;      /* Rápida: hovers de links */
+  --transition-base: 0.3s ease;      /* Base: hovers de botones y tarjetas */
+  --transition-slow: 0.4s ease;      /* Lenta: aparición del navbar */
 
-  /* ── Tema claro (por defecto) ── */
-  --bg-primary: #ffffff;
-  --bg-secondary: #F4FAF6;
-  --bg-tertiary: #EFF8F7;
-  --bg-hero: linear-gradient(135deg, #EFF8F7 0%, #FFFFFF 50%, #F4FAF6 100%);
-  --bg-card: #ffffff;
-  --bg-card-hover: #F4FAF6;
-  --bg-navbar: rgba(255, 255, 255, 0.85);
-  --bg-footer: #1A3A47;
+  /* ── Tema claro (colores por defecto) ── */
+  --bg-primary: #ffffff;             /* Fondo principal de la página */
+  --bg-secondary: #F4FAF6;           /* Fondo de secciones alternas (verde muy pálido) */
+  --bg-tertiary: #EFF8F7;            /* Fondo de áreas destacadas */
+  --bg-hero: linear-gradient(135deg, #EFF8F7 0%, #FFFFFF 50%, #F4FAF6 100%); /* Gradiente del hero */
+  --bg-card: #ffffff;                /* Fondo de tarjetas */
+  --bg-card-hover: #F4FAF6;          /* Fondo de tarjetas al pasar el mouse */
+  --bg-navbar: rgba(255, 255, 255, 0.85); /* Fondo semi-transparente del navbar (glassmorphism) */
+  --bg-footer: #1A3A47;             /* Fondo oscuro del footer */
 
-  --text-primary: #1A2A33;
-  --text-secondary: #4A6572;
-  --text-tertiary: #7A9AA8;
-  --text-on-dark: #ffffff;
-  --text-on-footer: #9AB8C2;
+  --text-primary: #1A2A33;           /* Texto principal: títulos, cuerpo */
+  --text-secondary: #4A6572;         /* Texto secundario: descripciones, subtítulos */
+  --text-tertiary: #7A9AA8;          /* Texto terciario: metadata, labels suaves */
+  --text-on-dark: #ffffff;           /* Texto sobre fondos oscuros */
+  --text-on-footer: #9AB8C2;         /* Texto sobre el fondo del footer */
 
-  --border-color: #D8EDED;
-  --border-light: #E8F4F2;
+  --border-color: #D8EDED;           /* Borde estándar de tarjetas y separadores */
+  --border-light: #E8F4F2;           /* Borde muy sutil (navbar scrolled) */
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);
-  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 8px 30px rgba(44, 104, 123, 0.12);
+  /* ── Sombras (4 niveles de profundidad) ── */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);   /* Mínima: elementos planos */
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);   /* Media: tarjetas featured */
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);  /* Grande: modales, dropdowns */
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.04); /* Tarjetas en reposo */
+  --shadow-card-hover: 0 8px 30px rgba(44, 104, 123, 0.12); /* Tarjetas al hover (tinte primario) */
 }
 
-/* ── Tema oscuro ── */
+/* ══════════════════════════════════════════
+   TEMA OSCURO
+   Sobreescribe las variables de color cuando
+   el atributo data-theme="dark" está en el HTML.
+   ══════════════════════════════════════════ */
 [data-theme="dark"] {
-  --brand-agua: #7BBFE8;
-  --brand-quim: #8CD8DE;
-  --brand-lab: #9AB8C2;
+  /* Colores del logo adaptados para fondo oscuro */
+  --brand-agua: #7BBFE8;             /* Azul más claro para contraste sobre oscuro */
+  --brand-quim: #8CD8DE;             /* Turquesa más claro */
+  --brand-lab: #9AB8C2;              /* Gris azulado más luminoso */
 
-  --bg-primary: #0D1B22;
-  --bg-secondary: #132A33;
-  --bg-tertiary: #1A3440;
-  --bg-hero: linear-gradient(135deg, #0D1B22 0%, #132A33 50%, #0F2318 100%);
-  --bg-card: #1A3440;
-  --bg-card-hover: #214250;
-  --bg-navbar: rgba(13, 27, 34, 0.9);
-  --bg-footer: #080F13;
+  /* Fondos oscuros */
+  --bg-primary: #0D1B22;             /* Fondo base: azul muy oscuro */
+  --bg-secondary: #132A33;           /* Fondo alterno: ligeramente más claro */
+  --bg-tertiary: #1A3440;            /* Fondo terciario: para áreas destacadas */
+  --bg-hero: linear-gradient(135deg, #0D1B22 0%, #132A33 50%, #0F2318 100%); /* Gradiente hero dark */
+  --bg-card: #1A3440;                /* Fondo de tarjetas en dark */
+  --bg-card-hover: #214250;          /* Fondo de tarjetas hover en dark */
+  --bg-navbar: rgba(13, 27, 34, 0.9); /* Navbar semi-opaco oscuro */
+  --bg-footer: #080F13;             /* Footer aún más oscuro */
 
-  --text-primary: #E8F0F2;
-  --text-secondary: #9AB8C2;
-  --text-tertiary: #6A8F9C;
-  --text-on-footer: #6A8F9C;
+  /* Textos con mejor contraste para fondo oscuro */
+  --text-primary: #E8F0F2;           /* Texto principal: blanco suave */
+  --text-secondary: #9AB8C2;         /* Texto secundario: gris azulado */
+  --text-tertiary: #6A8F9C;          /* Texto terciario: gris medio */
+  --text-on-footer: #6A8F9C;         /* Texto del footer */
 
-  --border-color: #1E3D4A;
-  --border-light: #214250;
+  /* Bordes sutiles para dark */
+  --border-color: #1E3D4A;           /* Borde estándar: apenas visible */
+  --border-light: #214250;           /* Borde sutil */
 
+  /* Sombras más fuertes para dark (las sombras se pierden sobre fondo oscuro) */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.4);
   --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.3);
-  --shadow-card-hover: 0 8px 30px rgba(140, 199, 196, 0.15);
+  --shadow-card-hover: 0 8px 30px rgba(140, 199, 196, 0.15); /* Tinte turquesa en hover */
 }

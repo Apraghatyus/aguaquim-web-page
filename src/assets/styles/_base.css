@@ -5,59 +5,64 @@
  * configura la fuente, colores de fondo, y estilos de elementos HTML.
  */
 
+/* Reset universal: elimina márgenes y paddings por defecto,
+   y usa box-sizing: border-box para que padding/border
+   se incluyan en el ancho/alto total del elemento */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box;            /* El ancho incluye padding + border */
+  margin: 0;                         /* Elimina margen por defecto */
+  padding: 0;                        /* Elimina padding por defecto */
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth;           /* Scroll suave al hacer clic en anclas (#servicios, etc.) */
 }
 
 body {
-  font-family: var(--font-family);
-  color: var(--text-primary);
-  background: var(--bg-primary);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-family);   /* Fuente Inter (definida en _variables.css) */
+  color: var(--text-primary);        /* Color de texto principal (se adapta al tema) */
+  background: var(--bg-primary);     /* Fondo de la página (blanco o azul oscuro) */
+  line-height: 1.6;                  /* Interlineado estándar para legibilidad */
+  -webkit-font-smoothing: antialiased;   /* Suavizado de fuentes en WebKit (Chrome/Safari) */
+  -moz-osx-font-smoothing: grayscale;    /* Suavizado de fuentes en Firefox Mac */
 }
 
 /* Transición suave al cambiar de tema (light ↔ dark).
    Se aplica temporalmente vía clase .theme-transition para que
-   TODOS los elementos animen background, color, border y shadow. */
+   TODOS los elementos animen background, color, border y shadow.
+   Se usa * para que todos los hijos también transicionen. */
 body.theme-transition,
 body.theme-transition *,
 body.theme-transition *::before,
 body.theme-transition *::after {
-  transition: background 0.8s ease,
-              background-color 0.8s ease,
-              color 0.8s ease,
-              border-color 0.8s ease,
-              box-shadow 0.8s ease !important;
+  transition: background 0.8s ease,           /* Fondo */
+              background-color 0.8s ease,     /* Color de fondo (cuando no es gradient) */
+              color 0.8s ease,                /* Color de texto */
+              border-color 0.8s ease,         /* Color de bordes */
+              box-shadow 0.8s ease !important; /* Sombras (!important para sobreescribir) */
 }
 
 img {
-  max-width: 100%;
-  display: block;
+  max-width: 100%;                   /* Las imágenes nunca desbordan su contenedor */
+  display: block;                    /* Elimina el espacio inferior que deja inline */
 }
 
 a {
-  color: inherit;
+  color: inherit;                    /* Los links heredan el color del padre */
 }
 
 ul, ol {
-  list-style: none;
+  list-style: none;                  /* Elimina bullets/números por defecto */
 }
 
+/* Selección de texto: fondo turquesa con texto blanco */
 ::selection {
-  background: var(--color-secondary);
-  color: #fff;
+  background: var(--color-secondary); /* Turquesa */
+  color: #fff;                       /* Texto blanco */
 }
 
 section {
-  transition: background var(--transition-base);
+  transition: background var(--transition-base); /* Transición suave del fondo al cambiar tema */
 }

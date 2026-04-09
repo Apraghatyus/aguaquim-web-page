@@ -1,323 +1,243 @@
 /*
  * _hero.css - Sección hero principal de la landing page.
  *
- * Layout grid 2 columnas, tarjetas flotantes decorativas,
+ * Layout grid 2 columnas, slideshow rotativo del equipo,
  * formas de fondo con blur, label con pill y breakpoints responsive.
- * Las clases .card-* se scopean bajo .hero para evitar colisiones.
  */
 
+/* ── Contenedor principal del hero ── */
 .hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  /* Gradiente light como base */
+  position: relative;             /* Contexto de posición para los hijos absolutos (::after, shapes) */
+  min-height: 100vh;              /* Ocupa al menos toda la altura de la ventana */
+  display: flex;                  /* Flexbox para centrar verticalmente el contenido */
+  align-items: center;            /* Centra el contenido en el eje vertical */
+  /* Gradiente diagonal suave para el fondo en modo claro */
   background: linear-gradient(135deg, #EFF8F7 0%, #FFFFFF 50%, #F4FAF6 100%);
-  overflow: hidden;
-  padding-top: 5rem;
+  overflow: hidden;               /* Oculta las formas decorativas que se desbordan */
+  padding-top: 5rem;              /* Espacio superior para que el navbar no tape el contenido */
 }
 
-/* Gradiente dark como capa superpuesta, animada con opacity.
-   CSS no puede transicionar valores de gradient, pero sí opacity. */
+/* Capa superpuesta con gradiente oscuro para el modo dark.
+   CSS no puede hacer transition de gradientes, pero sí de opacity,
+   así que se usa una capa aparte que se muestra/oculta con opacity. */
 .hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #0D1B22 0%, #132A33 50%, #0F2318 100%);
-  opacity: 0;
-  z-index: 0;
-  pointer-events: none;
+  content: '';                    /* Necesario para que el pseudo-elemento exista */
+  position: absolute;             /* Se posiciona sobre todo el hero */
+  inset: 0;                       /* Atajo: top:0 right:0 bottom:0 left:0 (cubre todo) */
+  background: linear-gradient(135deg, #0D1B22 0%, #132A33 50%, #0F2318 100%); /* Gradiente oscuro */
+  opacity: 0;                     /* Invisible por defecto (modo light) */
+  z-index: 0;                     /* Debajo del contenido pero encima del background */
+  pointer-events: none;           /* No bloquea clics ni interacciones */
 }
 
+/* En dark mode, la capa oscura se hace visible */
 [data-theme="dark"] .hero::after {
   opacity: 1;
 }
 
+/* Transición suave al cambiar de tema */
 body.theme-transition .hero::after {
-  transition: opacity 0.8s ease !important;
+  transition: opacity 0.8s ease !important; /* !important para sobreescribir cualquier otra regla */
 }
 
-/* Asegurar que el contenido del hero esté por encima del ::after */
+/* Todos los hijos directos del hero quedan por encima del ::after */
 .hero > * {
-  position: relative;
-  z-index: 1;
+  position: relative;             /* Crea contexto de apilamiento */
+  z-index: 1;                     /* Por encima del pseudo-elemento ::after (z-index: 0) */
 }
 
+/* ── Formas decorativas de fondo ── */
+
+/* Contenedor de las formas de fondo (círculos borrosos) */
 .hero-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+  position: absolute;             /* Se posiciona respecto al .hero */
+  inset: 0;                       /* Cubre todo el hero */
+  pointer-events: none;           /* No interfiere con clics del usuario */
 }
 
+/* Estilo base para cada forma decorativa */
 .hero-shape {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.3;
+  position: absolute;             /* Posición libre dentro de .hero-bg */
+  border-radius: 50%;             /* Forma circular */
+  filter: blur(80px);             /* Difuminado fuerte para efecto bokeh */
+  opacity: 0.3;                   /* Semi-transparente por defecto */
 }
 
+/* Forma 1: círculo grande arriba-derecha */
 .shape-1 {
-  width: 600px;
-  height: 600px;
-  background: var(--color-secondary);
-  top: -200px;
-  right: -100px;
-  opacity: 0.15;
+  width: 600px;                   /* Ancho del círculo */
+  height: 600px;                  /* Alto del círculo */
+  background: var(--color-secondary); /* Color secundario de la paleta (turquesa) */
+  top: -200px;                    /* Desplazada parcialmente fuera del viewport superior */
+  right: -100px;                  /* Desplazada parcialmente fuera del viewport derecho */
+  opacity: 0.15;                  /* Muy sutil para no distraer */
 }
 
+/* Forma 2: círculo mediano abajo-izquierda */
 .shape-2 {
   width: 400px;
   height: 400px;
-  background: var(--color-primary);
-  bottom: -100px;
-  left: -100px;
-  opacity: 0.1;
+  background: var(--color-primary); /* Color primario de la paleta (azul oscuro) */
+  bottom: -100px;                 /* Parcialmente fuera por abajo */
+  left: -100px;                   /* Parcialmente fuera por la izquierda */
+  opacity: 0.1;                   /* Aún más sutil */
 }
 
+/* Forma 3: círculo pequeño centrado */
 .shape-3 {
   width: 300px;
   height: 300px;
   background: var(--color-secondary);
-  top: 50%;
-  left: 40%;
-  opacity: 0.08;
+  top: 50%;                       /* Centrado verticalmente */
+  left: 40%;                      /* Ligeramente a la izquierda del centro */
+  opacity: 0.08;                  /* Apenas visible, efecto ambiental */
 }
 
+/* ── Layout del contenido ── */
+
+/* Grid principal: texto a la izquierda, slideshow a la derecha */
 .hero-container {
-  position: relative;
-  z-index: 1;
-  max-width: var(--container-wide);
-  margin: 0 auto;
-  padding: 3rem 2.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  position: relative;             /* Contexto para z-index */
+  z-index: 1;                     /* Por encima de las formas de fondo */
+  max-width: var(--container-wide); /* Ancho máximo del contenedor (variable global) */
+  margin: 0 auto;                 /* Centrado horizontal */
+  padding: 3rem 2.5rem;           /* Espacio interno */
+  display: grid;                  /* Layout en grid */
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales: texto | slideshow */
+  gap: 4rem;                      /* Espacio entre columnas */
+  align-items: center;            /* Alineación vertical centrada */
 }
 
+/* ── Etiqueta tipo pill ("Laboratorio Certificado") ── */
 .hero-label {
-  display: inline-block;
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  background: rgba(44, 104, 123, 0.08);
-  padding: 0.4rem 1rem;
-  border-radius: var(--radius-full);
-  margin-bottom: 1.5rem;
+  display: inline-block;          /* Se comporta como inline pero acepta padding */
+  font-size: var(--font-size-sm); /* Tamaño de fuente pequeño */
+  font-weight: 600;               /* Semi-bold */
+  letter-spacing: 2px;            /* Espaciado entre caracteres para estilo uppercase */
+  text-transform: uppercase;      /* Todo en mayúsculas */
+  color: var(--color-primary);    /* Color primario (azul) */
+  background: rgba(44, 104, 123, 0.08); /* Fondo semi-transparente del color primario */
+  padding: 0.4rem 1rem;           /* Espacio interno: poco vertical, más horizontal */
+  border-radius: var(--radius-full); /* Bordes completamente redondeados (pill) */
+  margin-bottom: 1.5rem;          /* Separación con el título */
 }
 
+/* En dark mode el fondo de la pill es más visible */
 [data-theme="dark"] .hero-label {
   background: rgba(44, 104, 123, 0.2);
 }
 
+/* ── Título principal ── */
 .hero-text h1 {
-  font-size: var(--font-size-6xl);
-  font-weight: 800;
-  line-height: 1.08;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
-  letter-spacing: -1px;
+  font-size: var(--font-size-6xl); /* Tamaño extra grande (~3.75rem) */
+  font-weight: 800;               /* Extra-bold */
+  line-height: 1.08;              /* Interlineado compacto para títulos grandes */
+  color: var(--text-primary);     /* Color de texto principal (se adapta al tema) */
+  margin-bottom: 1.5rem;          /* Separación con la descripción */
+  letter-spacing: -1px;           /* Kerning negativo: letras más juntas (estilo display) */
 }
 
+/* ── Descripción / subtítulo ── */
 .hero-description {
-  font-size: var(--font-size-xl);
-  line-height: 1.7;
-  color: var(--text-secondary);
-  margin-bottom: 2.5rem;
-  max-width: 480px;
+  font-size: var(--font-size-xl); /* Tamaño grande para legibilidad */
+  line-height: 1.7;               /* Interlineado amplio para textos largos */
+  color: var(--text-secondary);   /* Color de texto secundario (más suave) */
+  margin-bottom: 2.5rem;          /* Separación con los botones */
+  max-width: 480px;               /* Limita el ancho para legibilidad óptima (~60-70 caracteres) */
 }
 
+/* ── Botones de acción (CTA) ── */
 .hero-actions {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+  display: flex;                  /* Botones en fila */
+  gap: 1rem;                      /* Espacio entre botones */
+  align-items: center;            /* Alineados verticalmente al centro */
 }
 
-/* ── Tarjetas flotantes decorativas ── */
+/* ── Slideshow rotativo del equipo ── */
 
-.hero-visual {
-  position: relative;
-  height: 460px;
+/* Contenedor del slideshow de fotos */
+.hero-slideshow {
+  position: relative;             /* Contexto para las imágenes absolutas */
+  height: 460px;                  /* Altura fija del slideshow */
+  overflow: hidden;               /* Oculta partes de las imágenes que se desbordan */
+  background: transparent;        /* Sin fondo (las imágenes PNG tienen fondo transparente) */
 }
 
-.visual-card {
-  position: absolute;
-  background: var(--bg-card);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-light);
-  transition: transform var(--transition-base);
+/* Cada imagen del slideshow */
+.hero-slide {
+  position: absolute;             /* Todas apiladas en la misma posición */
+  inset: 0;                       /* Cubre todo el contenedor */
+  width: 100%;                    /* Ocupa el ancho completo */
+  height: 100%;                   /* Ocupa el alto completo */
+  object-fit: cover;              /* La imagen cubre el área sin deformarse (recorta si es necesario) */
+  opacity: 0;                     /* Invisible por defecto */
+  transition: opacity 1.2s ease;  /* Transición suave de 1.2s para el crossfade */
 }
 
-.card-main {
-  top: 0;
-  left: 10%;
-  padding: 2.5rem;
-  width: 260px;
-  text-align: center;
+/* La imagen activa se hace visible */
+.hero-slide.active {
+  opacity: 1;                     /* Visible: se muestra con el crossfade */
 }
 
-.card-main:hover { transform: translateY(-4px); }
-
-.hero .card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero .card-label {
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-bottom: 0.5rem;
-}
-
-.card-value {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  line-height: 1;
-  margin-bottom: 0.3rem;
-}
-
-.card-sub {
-  font-size: 0.85rem;
-  color: var(--text-tertiary);
-}
-
-.card-secondary {
-  bottom: 40px;
-  left: 0;
-  padding: 1.5rem 2rem;
-  width: 230px;
-}
-
-.card-secondary:hover { transform: translateY(-4px); }
-
-.card-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 0;
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.dot-green {
-  background: var(--color-success);
-}
-
-.card-accent {
-  top: 60px;
-  right: 0;
-  padding: 1.2rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: var(--color-primary);
-  color: #fff;
-  border-color: transparent;
-}
-
-.card-accent:hover { transform: translateY(-4px); }
-
-.card-accent-icon {
-  font-size: 2rem;
-}
-
-.card-accent-title {
-  font-weight: 700;
-  font-size: var(--font-size-md);
-}
-
-.card-accent-sub {
-  font-size: var(--font-size-sm);
-  opacity: 0.8;
-}
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════ */
 
 /* ── Tablet landscape (≤ 1024px) ── */
 @media (max-width: 1024px) {
   .hero-container {
-    gap: 2rem;
-    padding: 2rem 1.5rem;
+    gap: 2rem;                    /* Reduce el espacio entre columnas */
+    padding: 2rem 1.5rem;         /* Menos padding lateral */
   }
 
   .hero-text h1 {
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-4xl); /* Título más pequeño en tablet */
   }
 
   .hero-description {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-lg); /* Descripción ligeramente más pequeña */
   }
 
-  .hero-visual {
-    height: 380px;
-  }
-
-  .card-main {
-    width: 220px;
-    padding: 2rem;
-  }
-
-  .card-value {
-    font-size: 2.4rem;
-  }
-
-  .card-secondary {
-    width: 200px;
-    padding: 1.2rem 1.5rem;
-  }
-
-  .card-accent {
-    padding: 1rem 1.2rem;
+  .hero-slideshow {
+    height: 380px;                /* Slideshow más bajo en tablet */
   }
 }
 
 /* ── Mobile portrait (≤ 768px) ── */
 @media (max-width: 768px) {
   .hero {
-    min-height: auto;
-    padding-top: 5rem;
-    padding-bottom: 3rem;
+    min-height: auto;             /* Ya no necesita cubrir toda la ventana */
+    padding-top: 5rem;            /* Espacio para el navbar fijo */
+    padding-bottom: 3rem;         /* Espacio inferior */
   }
 
   .hero-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 2rem 1rem;
+    grid-template-columns: 1fr;   /* Una sola columna: texto arriba, slideshow abajo */
+    text-align: center;           /* Texto centrado en móvil */
+    padding: 2rem 1rem;           /* Padding reducido */
   }
 
   .hero-text h1 {
-    font-size: 2.2rem;
+    font-size: 2.2rem;            /* Título adaptado a pantalla pequeña */
   }
 
   .hero-description {
-    margin-left: auto;
+    margin-left: auto;            /* Centra el bloque de texto */
     margin-right: auto;
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-base); /* Tamaño de fuente estándar */
   }
 
   .hero-actions {
-    justify-content: center;
-    flex-direction: column;
+    justify-content: center;      /* Botones centrados */
+    flex-direction: column;       /* Botones apilados verticalmente */
     align-items: center;
   }
 
-  .hero-visual {
-    display: none;
+  .hero-slideshow {
+    height: 300px;                /* Slideshow más compacto en móvil */
   }
 
   .hero-label {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xs); /* Pill más pequeña */
   }
 }

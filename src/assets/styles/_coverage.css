@@ -5,112 +5,128 @@
  * tarjetas de ciudad con icono de ubicación y breakpoints responsive.
  */
 
+/* ── Contenedor de la sección ── */
 .coverage {
-  background: var(--bg-primary);
+  background: var(--bg-primary);     /* Fondo principal */
 }
 
+/* ── Layout asimétrico: texto (1fr) + ciudades (1.3fr más ancho) ── */
 .coverage-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 4rem;
-  align-items: center;
+  display: grid;                     /* Grid de 2 columnas */
+  grid-template-columns: 1fr 1.3fr; /* Columna izq más estrecha, derecha más ancha */
+  gap: 4rem;                         /* Espacio generoso entre columnas */
+  align-items: center;               /* Centrado vertical */
 }
 
+/* Descripción de la cobertura */
 .coverage-desc {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.5rem;            /* Separación con la estadística */
 }
 
+/* ── Estadística destacada (ej: "15+ Municipios") ── */
 .coverage-stat {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: flex;                     /* Número + texto en fila */
+  align-items: center;               /* Centrados verticalmente */
+  gap: 1rem;                         /* Espacio entre número y label */
 }
 
+/* Número grande de la estadística */
 .stat-number {
-  font-size: var(--font-size-5xl);
-  font-weight: 800;
-  color: var(--color-primary);
-  line-height: 1;
+  font-size: var(--font-size-5xl);   /* Tamaño muy grande (~3.5rem) */
+  font-weight: 800;                  /* Extra-bold */
+  color: var(--color-primary);       /* Azul primario */
+  line-height: 1;                    /* Sin interlineado extra */
 }
 
+/* Texto descriptivo junto al número */
 .stat-label {
-  font-size: var(--font-size-base);
-  color: var(--text-tertiary);
-  line-height: 1.3;
+  font-size: var(--font-size-base);  /* Tamaño base */
+  color: var(--text-tertiary);       /* Color terciario (gris claro) */
+  line-height: 1.3;                  /* Interlineado compacto */
 }
 
+/* ── Grid de tarjetas de ciudad (2 columnas) ── */
 .cities-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr;   /* 2 columnas iguales */
+  gap: 1rem;                         /* Espacio entre tarjetas */
 }
 
+/* ── Tarjeta de ciudad individual ── */
 .city-card {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: var(--bg-secondary);
-  padding: 1.3rem 1.5rem;
-  border-radius: var(--radius-md);
+  display: flex;                     /* Ícono + texto en fila */
+  align-items: center;               /* Centrados verticalmente */
+  gap: 1rem;                         /* Espacio entre ícono y texto */
+  background: var(--bg-secondary);   /* Fondo alterno */
+  padding: 1.3rem 1.5rem;           /* Espacio interno */
+  border-radius: var(--radius-md);   /* Bordes redondeados 14px */
 }
 
+/* Contenedor del ícono de ubicación */
 .city-icon {
-  width: 42px;
+  width: 42px;                       /* Tamaño cuadrado */
   height: 42px;
-  border-radius: var(--radius-sm);
-  background: rgba(44, 104, 123, 0.08);
-  display: flex;
+  border-radius: var(--radius-sm);   /* Bordes redondeados 12px */
+  background: rgba(44, 104, 123, 0.08); /* Fondo azul casi transparente */
+  display: flex;                     /* Centra el ícono */
   align-items: center;
   justify-content: center;
-  color: var(--color-primary);
-  flex-shrink: 0;
+  color: var(--color-primary);       /* Ícono azul primario */
+  flex-shrink: 0;                    /* No se encoge */
 }
 
+/* Fondo más visible en dark mode */
 [data-theme="dark"] .city-icon {
   background: rgba(44, 104, 123, 0.15);
 }
 
+/* Nombre de la ciudad */
 .city-card h3 {
-  font-size: 0.98rem;
-  font-weight: 700;
+  font-size: 0.98rem;               /* Tamaño medio */
+  font-weight: 700;                  /* Bold */
   color: var(--text-primary);
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.1rem;            /* Mínima separación con el departamento */
 }
 
+/* Departamento/región de la ciudad */
 .city-card p {
   margin: 0;
-  font-size: var(--font-size-sm);
-  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);    /* Tamaño pequeño */
+  color: var(--text-tertiary);       /* Color terciario (sutil) */
 }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════ */
 
 /* ── Tablet landscape (≤ 1024px) ── */
 @media (max-width: 1024px) {
   .coverage-layout {
-    gap: 2.5rem;
+    gap: 2.5rem;                     /* Reduce espacio entre columnas */
   }
 
   .stat-number {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-3xl); /* Número más pequeño */
   }
 
   .city-card {
-    padding: 1rem 1.2rem;
+    padding: 1rem 1.2rem;            /* Padding reducido */
   }
 }
 
 /* ── Mobile portrait (≤ 768px) ── */
 @media (max-width: 768px) {
   .coverage-layout {
-    grid-template-columns: 1fr;
-    text-align: center;
+    grid-template-columns: 1fr;      /* Una sola columna */
+    text-align: center;              /* Texto centrado */
   }
 
   .coverage-stat {
-    justify-content: center;
+    justify-content: center;         /* Estadística centrada */
   }
 
   .cities-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;  /* Mantiene 2 columnas en mobile */
   }
 
   .stat-number {
@@ -121,6 +137,6 @@
 /* ── Small mobile (≤ 480px) ── */
 @media (max-width: 480px) {
   .cities-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;      /* 1 sola columna en pantallas muy pequeñas */
   }
 }

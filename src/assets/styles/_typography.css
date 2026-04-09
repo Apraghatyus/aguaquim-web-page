@@ -5,69 +5,79 @@
  * labels, títulos, subtítulos, descripciones y texto con gradiente.
  */
 
+/* ── Label de sección (ej: "SOBRE NOSOTROS", "NUESTROS SERVICIOS") ── */
 .section-label {
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--color-secondary);
-  margin-bottom: 0.8rem;
+  font-size: var(--font-size-sm);    /* Tamaño pequeño (~12.8px) */
+  font-weight: 600;                  /* Semi-bold para destacar */
+  letter-spacing: 2px;               /* Espaciado amplio entre caracteres (estilo uppercase) */
+  text-transform: uppercase;         /* Convierte a MAYÚSCULAS */
+  color: var(--color-secondary);     /* Color turquesa de la paleta */
+  margin-bottom: 0.8rem;             /* Separación con el título de sección */
 }
 
+/* ── Título de sección (ej: "Quiénes Somos", "Cobertura") ── */
 .section-title {
-  font-size: var(--font-size-4xl);
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
+  font-size: var(--font-size-4xl);   /* Tamaño grande (~2.8rem) */
+  font-weight: 800;                  /* Extra-bold */
+  color: var(--text-primary);        /* Color principal (se adapta al tema) */
+  letter-spacing: -0.5px;            /* Kerning negativo: letras ligeramente más juntas */
 }
 
+/* ── Subtítulo de sección (texto explicativo debajo del título) ── */
 .section-subtitle {
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  max-width: 560px;
-  margin: 0 auto;
-  line-height: 1.6;
+  color: var(--text-secondary);      /* Color secundario más suave */
+  font-size: 1.1rem;                 /* Ligeramente más grande que body */
+  max-width: 560px;                  /* Limita el ancho para legibilidad (~65 caracteres) */
+  margin: 0 auto;                    /* Centra horizontalmente */
+  line-height: 1.6;                  /* Interlineado cómodo */
 }
 
+/* ── Descripción de sección (párrafos dentro de secciones) ── */
 .section-desc {
-  color: var(--text-secondary);
-  font-size: var(--font-size-lg);
-  line-height: 1.7;
+  color: var(--text-secondary);      /* Color secundario */
+  font-size: var(--font-size-lg);    /* Tamaño grande para legibilidad */
+  line-height: 1.7;                  /* Interlineado amplio para bloques de texto */
 }
 
+/* Los strong dentro de descripciones usan color primario para resaltar */
 .section-desc strong {
-  color: var(--text-primary);
+  color: var(--text-primary);        /* Texto destacado en negrita con color principal */
 }
 
+/* ── Texto con gradiente (ej: la palabra "precisión" en el hero) ── */
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); /* Gradiente azul→turquesa */
+  -webkit-background-clip: text;     /* Recorta el fondo al texto (WebKit) */
+  -webkit-text-fill-color: transparent; /* Hace el texto transparente para ver el gradiente */
+  background-clip: text;             /* Estándar (sin prefijo) */
 }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════ */
 
 /* ── Tablet landscape (≤ 1024px) ── */
 @media (max-width: 1024px) {
   .section-title {
-    font-size: 2.2rem;
+    font-size: 2.2rem;               /* Título más pequeño en tablet */
   }
 
   .section-subtitle {
-    font-size: 1rem;
+    font-size: 1rem;                 /* Subtítulo reducido */
   }
 }
 
 /* ── Mobile portrait (≤ 768px) ── */
 @media (max-width: 768px) {
   .section-title {
-    font-size: 1.75rem;
+    font-size: 1.75rem;              /* Título compacto para móvil */
   }
 
   .section-subtitle {
-    font-size: 0.92rem;
+    font-size: 0.92rem;              /* Subtítulo aún más pequeño */
   }
 
   .section-desc {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-base); /* Descripción en tamaño base */
   }
 }

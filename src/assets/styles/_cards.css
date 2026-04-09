@@ -3,42 +3,50 @@
  *
  * Hover lift, bordes, sombras y transiciones que se repiten
  * en value-card, city-card, service-card, etc.
+ * Estos estilos se combinan con los específicos de cada componente.
  */
 
+/* ── Base de tarjeta: fondo, borde y hover ── */
 .card-base {
-  background: var(--bg-card);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border-light);
-  transition: transform var(--transition-base),
-              box-shadow var(--transition-base),
-              border-color var(--transition-base);
+  background: var(--bg-card);        /* Fondo de tarjeta (blanco o azul oscuro en dark) */
+  border-radius: var(--radius-xl);   /* Bordes redondeados 20px */
+  border: 1px solid var(--border-light); /* Borde sutil (apenas visible) */
+  transition: transform var(--transition-base),    /* Transición para el efecto lift */
+              box-shadow var(--transition-base),   /* Transición para la sombra */
+              border-color var(--transition-base); /* Transición para el borde */
 }
 
+/* Hover base: sombra con tinte primario y borde azul */
 .card-base:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--color-primary);
+  box-shadow: var(--shadow-card-hover); /* Sombra difusa con tinte azul/turquesa */
+  border-color: var(--color-primary);   /* Borde azul al hover */
 }
 
+/* ── Variantes de elevación (lift) al hover ── */
+
+/* Elevación pequeña: para tarjetas compactas (cities, values) */
 .card-base--lift-sm:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px);       /* Se eleva 3px */
 }
 
+/* Elevación media: para tarjetas estándar */
 .card-base--lift-md:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px);       /* Se eleva 4px */
 }
 
+/* Elevación grande: para tarjetas destacadas (featured) */
 .card-base--lift-lg:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px);       /* Se eleva 6px */
 }
 
-/* Badge pill (ej: "Popular") */
+/* ── Badge pill (ej: "Popular", "Nuevo") ── */
 .card-badge {
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  background: var(--color-accent);
-  color: #fff;
-  padding: 0.3rem 0.8rem;
-  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);    /* Tamaño extra pequeño */
+  font-weight: 700;                  /* Bold */
+  text-transform: uppercase;         /* MAYÚSCULAS */
+  letter-spacing: 1px;               /* Espaciado entre caracteres */
+  background: var(--color-accent);   /* Fondo verde bosque */
+  color: #fff;                       /* Texto blanco */
+  padding: 0.3rem 0.8rem;           /* Padding compacto */
+  border-radius: var(--radius-full); /* Completamente redondeado (pill) */
 }

@@ -6,137 +6,162 @@
  * barra inferior con copyright y breakpoints responsive.
  */
 
+/* ── Contenedor principal del footer ── */
 .footer {
-  background: var(--bg-footer);
-  color: var(--text-on-footer);
-  padding: 5rem 2rem 2rem;
+  background: var(--bg-footer);      /* Fondo oscuro (#1A3A47 light / #080F13 dark) */
+  color: var(--text-on-footer);      /* Color de texto para fondo oscuro */
+  padding: 5rem 2rem 2rem;          /* Más padding arriba, menos abajo */
 }
 
+/* ── Grid de 4 columnas ── */
 .footer-grid {
-  display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1.5fr;
-  gap: 3rem;
+  display: grid;                     /* Layout en grid */
+  grid-template-columns: 1.8fr 1fr 1fr 1.5fr; /* Marca más ancha, contacto al final */
+  gap: 3rem;                         /* Espacio entre columnas */
 }
 
+/* ── Logo del footer (imagen + marca) ── */
 .footer-logo {
-  display: flex;
+  display: flex;                     /* Imagen + texto en fila */
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;            /* Separación con el tagline */
 }
 
+/* Imagen del logo */
 .footer-logo-img {
-  margin-top: -5px;
-  height: 50px;
+  margin-top: -5px;                  /* Ajuste de alineación óptica */
+  height: 50px;                      /* Misma altura que en el navbar */
 }
 
+/* Span genérico del logo (ya no se usa, reemplazado por .logo-brand) */
 .footer-logo span {
-  /* Ya no se usa el span genérico, la marca usa .logo-brand */
 }
 
-/* Brand typography en footer: hereda los mismos estilos del navbar
-   pero adapta colores para fondo oscuro */
+/* ── Colores de marca adaptados para fondo oscuro del footer ── */
+/* Estos colores son fijos (no dependen del tema) porque el footer
+   siempre tiene fondo oscuro tanto en light como en dark mode */
 .footer-brand .logo-agua {
-  color: #7BBFE8;
+  color: #7BBFE8;                    /* Azul claro (siempre, sin importar el tema) */
 }
 
 .footer-brand .logo-quim {
-  color: #8CD8DE;
+  color: #8CD8DE;                    /* Turquesa claro */
 }
 
 .footer-brand .logo-subtitle {
-  color: #9AB8C2;
+  color: #9AB8C2;                    /* Gris azulado claro */
 }
 
+/* Tagline del footer (debajo del logo) */
 .footer-tagline {
   font-size: 0.88rem;
-  color: var(--color-secondary);
+  color: var(--color-secondary);     /* Turquesa */
   margin-bottom: 1rem;
 }
 
+/* Descripción del footer */
 .footer-desc {
   font-size: 0.88rem;
   line-height: 1.6;
-  max-width: 280px;
+  max-width: 280px;                  /* Limita el ancho */
 }
 
+/* ── Columnas de links ── */
+
+/* Título de cada columna (ej: "EMPRESA", "SERVICIOS") */
 .footer-col h4 {
-  color: #fff;
+  color: #fff;                       /* Blanco (destaca sobre fondo oscuro) */
   font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 1.2rem;
-  text-transform: uppercase;
+  letter-spacing: 0.5px;            /* Ligero espaciado */
+  margin-bottom: 1.2rem;            /* Separación con los links */
+  text-transform: uppercase;         /* MAYÚSCULAS */
 }
 
+/* Cada ítem de la lista */
 .footer-col li {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.6rem;            /* Espacio entre links */
 }
 
+/* Links del footer */
 .footer-col a {
-  color: var(--text-on-footer);
-  text-decoration: none;
+  color: var(--text-on-footer);      /* Color para fondo oscuro */
+  text-decoration: none;             /* Sin subrayado */
   font-size: var(--font-size-base);
-  transition: color var(--transition-fast);
+  transition: color var(--transition-fast); /* Transición rápida al hover */
 }
 
+/* Hover: cambia a turquesa */
 .footer-col a:hover {
   color: var(--color-secondary);
 }
 
+/* ── Lista de contacto (con íconos SVG) ── */
+
+/* Cada ítem de contacto (ícono + texto) */
 .contact-list li {
-  display: flex;
+  display: flex;                     /* Ícono y texto en fila */
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.6rem;                       /* Espacio entre ícono y texto */
 }
 
+/* Ícono SVG de contacto */
 .contact-list svg {
-  color: var(--color-secondary);
-  flex-shrink: 0;
+  color: var(--color-secondary);     /* Turquesa */
+  flex-shrink: 0;                    /* No se encoge */
 }
 
+/* ── Línea divisoria antes del copyright ── */
 .footer-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 3rem 0 1.5rem;
+  height: 1px;                       /* Línea de 1px de alto */
+  background: rgba(255, 255, 255, 0.08); /* Blanco al 8% (muy sutil) */
+  margin: 3rem 0 1.5rem;            /* Espacio arriba y abajo */
 }
 
+/* ── Barra inferior (copyright + links legales) ── */
 .footer-bottom {
-  display: flex;
+  display: flex;                     /* Copyright izq, links der */
   justify-content: space-between;
   align-items: center;
-  font-size: 0.82rem;
-  color: #5a6578;
+  font-size: 0.82rem;               /* Tamaño pequeño */
+  color: #5a6578;                    /* Gris oscuro (bajo contraste intencional) */
 }
 
+/* Links legales (Privacidad, Términos) */
 .footer-bottom-links {
-  display: flex;
-  gap: 2rem;
+  display: flex;                     /* Links en fila */
+  gap: 2rem;                         /* Espacio entre links */
 }
 
 .footer-bottom-links a {
-  color: #5a6578;
+  color: #5a6578;                    /* Mismo gris que el copyright */
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 .footer-bottom-links a:hover {
-  color: var(--color-secondary);
+  color: var(--color-secondary);     /* Turquesa al hover */
 }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════ */
 
 /* ── Tablet landscape (≤ 1024px) ── */
 @media (max-width: 1024px) {
   .footer {
-    padding: 4rem 1.5rem 2rem;
+    padding: 4rem 1.5rem 2rem;       /* Padding reducido */
   }
 
   .footer-grid {
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr; /* 3 columnas (marca ocupa fila completa) */
     gap: 2rem;
   }
 
+  /* La marca ocupa todo el ancho */
   .footer-grid .footer-brand {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1;             /* Desde la primera hasta la última columna */
   }
 }
 
@@ -147,16 +172,16 @@
   }
 
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;  /* 2 columnas */
     gap: 2rem;
   }
 
   .footer-grid .footer-brand {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1;             /* Marca en fila completa */
   }
 
   .footer-bottom {
-    flex-direction: column;
+    flex-direction: column;          /* Copyright y links apilados */
     gap: 1rem;
     text-align: center;
   }
@@ -165,6 +190,6 @@
 /* ── Small mobile (≤ 480px) ── */
 @media (max-width: 480px) {
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;      /* 1 sola columna */
   }
 }

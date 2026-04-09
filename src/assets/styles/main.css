@@ -12,21 +12,24 @@
  *
  * Los componentes .vue NO contienen <style>. Todos los estilos
  * están centralizados en estos parciales CSS.
+ *
+ * ORDEN IMPORTANTE: los fundamentos van primero porque definen
+ * las variables y resets que usan los componentes.
  */
 
-/* ── Fundamentos ── */
-@import './_variables.css';
-@import './_base.css';
-@import './_layout.css';
-@import './_typography.css';
-@import './_buttons.css';
-@import './_cards.css';
+/* ── Fundamentos (orden: tokens → reset → layout → tipografía → UI) ── */
+@import './_variables.css';    /* Design tokens: colores, fuentes, espaciado, sombras */
+@import './_base.css';         /* Reset CSS + estilos base (body, img, a, selection) */
+@import './_layout.css';       /* Contenedores (.container) y padding de secciones */
+@import './_typography.css';   /* Clases tipográficas compartidas (.section-title, .text-gradient) */
+@import './_buttons.css';      /* Sistema de botones (.btn--primary, --secondary, --wa, etc.) */
+@import './_cards.css';        /* Patrones de tarjetas (.card-base, lift, badge) */
 
-/* ── Componentes / Secciones ── */
-@import './_navbar.css';
-@import './_hero.css';
-@import './_about.css';
-@import './_services.css';
-@import './_coverage.css';
-@import './_signup.css';
-@import './_footer.css';
+/* ── Componentes / Secciones (orden de aparición en la página) ── */
+@import './_navbar.css';       /* Navbar fijo con glassmorphism y menú hamburguesa */
+@import './_hero.css';         /* Hero: grid 2 columnas, slideshow del equipo, shapes blur */
+@import './_about.css';        /* Quiénes Somos: texto + tarjetas de valores numeradas */
+@import './_services.css';     /* Servicios: grid 3 columnas, tarjetas con íconos y listas */
+@import './_coverage.css';     /* Cobertura: layout asimétrico, estadística, grid de ciudades */
+@import './_signup.css';       /* Inscripción CTA: tarjeta azul, blob decorativo, badge glass */
+@import './_footer.css';       /* Footer: grid 4 columnas, contacto, copyright */

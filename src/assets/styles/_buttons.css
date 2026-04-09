@@ -2,131 +2,138 @@
  * _buttons.css - Sistema de botones reutilizables.
  *
  * Base compartida + variantes. Todos los botones parten de .btn
- * y agregan un modificador de estilo.
+ * y agregan un modificador de estilo (.btn--primary, .btn--secondary, etc.).
  */
 
+/* ── Base: estilos compartidos por TODOS los botones ── */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: var(--font-size-md);
-  text-decoration: none;
-  transition: all var(--transition-base);
-  cursor: pointer;
-  border: none;
+  display: inline-flex;              /* Permite ícono + texto en línea */
+  align-items: center;               /* Centra verticalmente ícono y texto */
+  gap: 0.5rem;                       /* Espacio entre ícono y texto */
+  border-radius: var(--radius-full); /* Completamente redondeado (pill) */
+  font-weight: 600;                  /* Semi-bold */
+  font-size: var(--font-size-md);    /* Tamaño medio (~15.2px) */
+  text-decoration: none;             /* Sin subrayado (funciona como <a>) */
+  transition: all var(--transition-base); /* Transición suave para hover */
+  cursor: pointer;                   /* Cursor de mano */
+  border: none;                      /* Sin borde por defecto */
 }
 
-/* Botón principal - fondo azul sólido */
+/* ── Primary: botón principal - fondo azul sólido ── */
 .btn--primary {
-  padding: 0.9rem 1.8rem;
-  background: var(--color-primary);
-  color: #fff;
+  padding: 0.9rem 1.8rem;           /* Padding generoso */
+  background: var(--color-primary);  /* Azul petróleo */
+  color: #fff;                       /* Texto blanco */
 }
 
 .btn--primary:hover {
-  background: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(44, 104, 123, 0.3);
+  background: var(--color-primary-dark); /* Azul más oscuro */
+  transform: translateY(-2px);       /* Se eleva 2px (efecto lift) */
+  box-shadow: 0 8px 24px rgba(44, 104, 123, 0.3); /* Sombra difusa con tinte primario */
 }
 
-/* Botón secundario - borde, fondo transparente */
+/* ── Secondary: botón secundario - borde, sin fondo ── */
 .btn--secondary {
   padding: 0.9rem 1.8rem;
-  background: transparent;
-  color: var(--text-primary);
-  border: 1.5px solid var(--border-color);
+  background: transparent;           /* Sin fondo */
+  color: var(--text-primary);        /* Color de texto principal */
+  border: 1.5px solid var(--border-color); /* Borde sutil */
 }
 
 .btn--secondary:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  background: rgba(44, 104, 123, 0.04);
+  border-color: var(--color-primary); /* Borde se vuelve azul */
+  color: var(--color-primary);        /* Texto azul */
+  background: rgba(44, 104, 123, 0.04); /* Fondo azul casi invisible */
 }
 
-/* CTA compacto (navbar) */
+/* ── CTA: botón compacto para el navbar ── */
 .btn--cta {
-  padding: 0.6rem 1.5rem;
+  padding: 0.6rem 1.5rem;           /* Padding reducido */
   background: var(--color-primary);
   color: #fff;
-  font-size: 0.88rem;
-  letter-spacing: 0.3px;
+  font-size: 0.88rem;               /* Más pequeño que los botones principales */
+  letter-spacing: 0.3px;            /* Ligero espaciado */
 }
 
 .btn--cta:hover {
   background: var(--color-primary-dark);
-  transform: translateY(-1px);
+  transform: translateY(-1px);       /* Lift más sutil (1px) */
   box-shadow: 0 4px 16px rgba(44, 104, 123, 0.3);
 }
 
-/* Link con flecha */
+/* ── Link: botón como texto con flecha ── */
 .btn--link {
-  gap: 0.5rem;
-  color: var(--color-primary);
+  gap: 0.5rem;                       /* Espacio entre texto y flecha */
+  color: var(--color-primary);       /* Azul primario */
   font-size: var(--font-size-md);
-  background: none;
-  padding: 0;
+  background: none;                  /* Sin fondo */
+  padding: 0;                        /* Sin padding */
 }
 
 .btn--link:hover {
-  color: var(--color-secondary);
-  gap: 0.8rem;
+  color: var(--color-secondary);     /* Turquesa al hover */
+  gap: 0.8rem;                       /* La flecha se aleja del texto (efecto sutil) */
 }
 
-/* Link inline en tarjetas */
+/* ── Card Link: link dentro de tarjetas ── */
 .btn--card-link {
-  gap: 0.4rem;
-  font-size: var(--font-size-base);
+  gap: 0.4rem;                       /* Gap más pequeño que btn--link */
+  font-size: var(--font-size-base);  /* Tamaño base */
   color: var(--color-primary);
   background: none;
   padding: 0;
 }
 
 .btn--card-link:hover {
-  gap: 0.7rem;
+  gap: 0.7rem;                       /* Efecto de flecha alejándose */
 }
 
-/* WhatsApp */
+/* ── WhatsApp: botón verde de WhatsApp ── */
 .btn--wa {
   padding: 0.85rem 1.6rem;
-  background: var(--color-whatsapp);
+  background: var(--color-whatsapp); /* Verde WhatsApp oficial (#25d366) */
   color: #fff;
   font-size: 0.92rem;
-  gap: 0.6rem;
+  gap: 0.6rem;                       /* Espacio para el ícono de WhatsApp */
 }
 
 .btn--wa:hover {
-  background: var(--color-whatsapp-dark);
+  background: var(--color-whatsapp-dark); /* Verde más oscuro */
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3); /* Sombra verde */
 }
 
-/* Email (glassmorphism sobre fondo oscuro) */
+/* ── Email: botón glassmorphism sobre fondo oscuro (footer/signup) ── */
 .btn--email {
   padding: 0.85rem 1.6rem;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15); /* Fondo blanco semi-transparente */
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25); /* Borde blanco sutil */
   font-size: 0.92rem;
   gap: 0.6rem;
 }
 
 .btn--email:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.25); /* Más opaco al hover */
   transform: translateY(-2px);
 }
 
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════ */
+
 /* ── Mobile portrait (≤ 768px) ── */
 @media (max-width: 768px) {
+  /* Botones primario y secundario: ancho completo en mobile */
   .btn--primary,
   .btn--secondary {
-    padding: 0.8rem 1.5rem;
-    font-size: var(--font-size-base);
-    width: 100%;
-    justify-content: center;
+    padding: 0.8rem 1.5rem;          /* Padding ligeramente reducido */
+    font-size: var(--font-size-base); /* Tamaño base */
+    width: 100%;                     /* Ocupa todo el ancho disponible */
+    justify-content: center;         /* Centra el contenido */
   }
 
+  /* WhatsApp y Email: también ancho completo */
   .btn--wa,
   .btn--email {
     padding: 0.75rem 1.4rem;

@@ -6,245 +6,277 @@
  * menú hamburguesa responsive y breakpoints.
  */
 
+/* ── Contenedor principal del navbar ── */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: transparent;
-  transition: background var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-slow);
-  border-bottom: 1px solid transparent;
+  position: fixed;                   /* Fijo en la parte superior al hacer scroll */
+  top: 0;                            /* Pegado al borde superior */
+  left: 0;                           /* Pegado al borde izquierdo */
+  width: 100%;                       /* Ocupa todo el ancho de la ventana */
+  z-index: 1000;                     /* Por encima de todo el contenido */
+  background: transparent;           /* Transparente por defecto (se ve el hero detrás) */
+  transition: background var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-slow); /* Transición suave al hacer scroll */
+  border-bottom: 1px solid transparent; /* Borde invisible, se colorea al hacer scroll */
 }
 
+/* Estado al hacer scroll: glassmorphism (fondo semi-opaco + blur) */
 .navbar.scrolled {
-  background: var(--bg-navbar);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom-color: var(--border-light);
+  background: var(--bg-navbar);      /* Fondo semi-transparente (blanco 85% o azul oscuro 90%) */
+  backdrop-filter: blur(20px);       /* Desenfoque del contenido detrás (efecto cristal) */
+  -webkit-backdrop-filter: blur(20px); /* Prefijo para Safari */
+  border-bottom-color: var(--border-light); /* Línea sutil en la parte inferior */
 }
 
+/* ── Layout interno del navbar ── */
 .navbar-container {
-  max-width: var(--container-wide);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.1rem 2.5rem;
+  max-width: var(--container-wide);  /* Ancho máximo 1280px */
+  margin: 0 auto;                   /* Centrado horizontal */
+  display: flex;                     /* Flexbox: logo | links | actions en fila */
+  align-items: center;               /* Alineados verticalmente al centro */
+  justify-content: space-between;    /* Logo a la izquierda, links en medio, actions a la derecha */
+  padding: 1.1rem 2.5rem;           /* Espacio interno generoso */
 }
 
+/* ── Logo (imagen + texto de marca) ── */
 .navbar-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  text-decoration: none;
+  display: flex;                     /* Logo y texto en fila */
+  align-items: center;               /* Centrados verticalmente */
+  gap: 0.6rem;                       /* Espacio entre imagen y texto */
+  text-decoration: none;             /* Sin subrayado del link */
 }
 
+/* Imagen del logo (ícono/isotipo) */
 .logo-img {
-  margin-top: -5px;
-  height: 50px;
-  transition: filter var(--transition-base);
+  margin-top: -5px;                  /* Ajuste vertical para alineación óptica */
+  height: 50px;                      /* Altura fija del logo */
+  transition: filter var(--transition-base); /* Transición para posibles filtros */
 }
 
-/* ── Brand typography (AGUA + QUIM + LABORATORIO) ── */
+/* ── Tipografía de marca (AGUA + QUIM + LABORATORIO) ── */
+
+/* Contenedor vertical: [AGUAQUIM] arriba, [LABORATORIO] abajo */
 .logo-brand {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
+  display: flex;                     /* Flexbox vertical */
+  flex-direction: column;            /* Apila: texto arriba, subtítulo abajo */
+  line-height: 1;                    /* Interlineado compacto */
 }
 
+/* Contenedor horizontal: [AGUA][QUIM] en la misma línea */
 .logo-text {
-  display: flex;
-  align-items: baseline;
-  gap: 0;
+  display: flex;                     /* Flexbox horizontal */
+  align-items: baseline;             /* Alineados por la línea base del texto */
+  gap: 0;                            /* Sin espacio entre AGUA y QUIM */
 }
 
+/* Texto "AGUA" - Fuente Iwata UD Gothic */
 .logo-agua {
-  font-family: var(--font-brand-agua);
-  font-weight: normal;
-  font-size: 1.3rem;
-  color: var(--brand-agua);
-  letter-spacing: 1.2px;
-  transform: scaleX(0.90) scaleY(1.1);
-  transform-origin: left;
-  -webkit-text-stroke: 0;
-  transition: color var(--transition-base);
+  font-family: var(--font-brand-agua); /* Iwata UD Gothic (bold japonesa) */
+  font-weight: normal;               /* La fuente ya es heavy, no necesita bold extra */
+  font-size: 1.3rem;                 /* Tamaño del texto */
+  color: var(--brand-agua);          /* Azul oscuro (#0B4F82 light / #7BBFE8 dark) */
+  letter-spacing: 1.2px;            /* Espaciado entre caracteres */
+  transform: scaleX(0.90) scaleY(1.1); /* Comprime horizontal y estira vertical para matching del logo */
+  transform-origin: left;           /* El escalado se ancla desde la izquierda */
+  -webkit-text-stroke: 0;           /* Sin trazo extra */
+  transition: color var(--transition-base); /* Transición suave al cambiar tema */
 }
 
+/* Texto "QUIM" - Fuente Ultine Condensed */
 .logo-quim {
-  font-family: var(--font-brand-quim);
+  font-family: var(--font-brand-quim); /* Ultine Cond (condensada regular) */
   font-weight: normal;
   font-size: 1.3rem;
-  color: var(--brand-quim);
+  color: var(--brand-quim);          /* Turquesa (#5ABBC4 light / #8CD8DE dark) */
   letter-spacing: 1.2px;
-  transform: scaleX(0.90) scaleY(1.1);
+  transform: scaleX(0.90) scaleY(1.1); /* Mismo escalado que AGUA para consistencia */
   transform-origin: left;
-  margin-left: -7px;
+  margin-left: -7px;                /* Margen negativo: acerca QUIM a AGUA (el scaleX crea gap) */
   transition: color var(--transition-base);
 }
 
+/* Texto "LABORATORIO" - Fuente Segoe TV */
 .logo-subtitle {
-  font-family: var(--font-brand-lab);
+  font-family: var(--font-brand-lab); /* Segoe TV (limpia, geométrica) */
   font-weight: normal;
-  font-size: 0.59rem;
-  color: var(--brand-lab);
-  letter-spacing: 0.58em;
-  margin-top: 3px;
-  text-transform: uppercase;
+  font-size: 0.59rem;               /* Tamaño muy pequeño */
+  color: var(--brand-lab);           /* Gris azulado (#4A5560 light / #9AB8C2 dark) */
+  letter-spacing: 0.58em;           /* Espaciado amplio entre caracteres (estilo LABORATORIO expandido) */
+  margin-top: 3px;                   /* Pequeña separación con AGUAQUIM */
+  text-transform: uppercase;         /* Mayúsculas */
   transition: color var(--transition-base);
 }
 
+/* ── Links de navegación ── */
 .nav-links {
-  display: flex;
-  gap: 2.5rem;
-  align-items: center;
+  display: flex;                     /* Links en fila horizontal */
+  gap: 2.5rem;                       /* Espacio generoso entre links */
+  align-items: center;               /* Centrados verticalmente */
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: var(--text-secondary);
-  font-weight: 500;
-  font-size: 0.92rem;
-  letter-spacing: 0.2px;
-  transition: color 0.25s;
-  position: relative;
+  text-decoration: none;             /* Sin subrayado */
+  color: var(--text-secondary);      /* Color secundario (gris) */
+  font-weight: 500;                  /* Medium weight */
+  font-size: 0.92rem;               /* Tamaño moderado */
+  letter-spacing: 0.2px;            /* Ligero espaciado */
+  transition: color 0.25s;          /* Transición del color al hover */
+  position: relative;                /* Contexto para el pseudo-elemento ::after (subrayado) */
 }
 
+/* Subrayado animado: línea que crece de izquierda a derecha al hover */
 .nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-primary);
-  transition: width var(--transition-base);
+  content: '';                       /* Pseudo-elemento vacío */
+  position: absolute;                /* Posicionado debajo del texto */
+  bottom: -4px;                      /* 4px debajo del texto */
+  left: 0;                           /* Empieza desde la izquierda */
+  width: 0;                          /* Ancho 0 por defecto (invisible) */
+  height: 2px;                       /* Grosor de la línea */
+  background: var(--color-primary);  /* Color primario (azul) */
+  transition: width var(--transition-base); /* Anima el ancho al hover */
 }
 
+/* Hover: cambia color del texto */
 .nav-links a:hover {
-  color: var(--color-primary);
+  color: var(--color-primary);       /* Azul primario */
 }
 
+/* Hover: el subrayado crece al 100% */
 .nav-links a:hover::after {
-  width: 100%;
+  width: 100%;                       /* Línea completa */
 }
 
+/* ── Acciones del navbar (botón CTA + toggle tema) ── */
 .nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: flex;                     /* En fila */
+  align-items: center;               /* Centrados verticalmente */
+  gap: 1rem;                         /* Espacio entre botón y toggle */
 }
 
+/* ── Botón toggle de tema (sol/luna) ── */
 .theme-toggle {
-  display: flex;
+  display: flex;                     /* Centra el ícono */
   align-items: center;
   justify-content: center;
-  width: 40px;
+  width: 40px;                       /* Tamaño cuadrado */
   height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border-color);
-  background: var(--bg-card);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.25s;
+  border-radius: 50%;                /* Forma circular */
+  border: 1px solid var(--border-color); /* Borde sutil */
+  background: var(--bg-card);        /* Fondo de tarjeta (blanco o azul oscuro) */
+  color: var(--text-secondary);      /* Color del ícono */
+  cursor: pointer;                   /* Cursor de click */
+  transition: all 0.25s;             /* Transición suave */
 }
 
+/* Hover: destaca con color primario */
 .theme-toggle:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  background: var(--bg-tertiary);
+  border-color: var(--color-primary); /* Borde azul */
+  color: var(--color-primary);        /* Ícono azul */
+  background: var(--bg-tertiary);     /* Fondo ligeramente diferente */
 }
 
+/* ── Menú hamburguesa (solo visible en mobile) ── */
 .menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
+  display: none;                     /* Oculto por defecto (desktop) */
+  flex-direction: column;            /* Barras apiladas verticalmente */
+  gap: 5px;                          /* Espacio entre barras */
+  background: none;                  /* Sin fondo */
+  border: none;                      /* Sin borde */
   cursor: pointer;
   padding: 6px;
 }
 
+/* Cada barra del hamburguesa */
 .bar {
-  width: 22px;
-  height: 2px;
-  background: var(--text-primary);
-  border-radius: 2px;
-  transition: all var(--transition-base);
+  width: 22px;                       /* Ancho de cada barra */
+  height: 2px;                       /* Grosor de cada barra */
+  background: var(--text-primary);   /* Color del texto principal */
+  border-radius: 2px;                /* Ligeramente redondeada */
+  transition: all var(--transition-base); /* Transición para la animación de X */
 }
 
-.bar.active:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.bar.active:nth-child(2) { opacity: 0; }
-.bar.active:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+/* Animación: hamburguesa → X cuando está activo */
+.bar.active:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }   /* Barra 1 rota 45° */
+.bar.active:nth-child(2) { opacity: 0; }                                       /* Barra 2 desaparece */
+.bar.active:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); } /* Barra 3 rota -45° */
+
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════ */
 
 /* ── Tablet landscape (≤ 1024px) ── */
 @media (max-width: 1024px) {
   .navbar-container {
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.5rem;            /* Reduce padding lateral */
   }
 
   .nav-links {
-    gap: 1.5rem;
+    gap: 1.5rem;                     /* Menos espacio entre links */
   }
 
   .nav-links a {
-    font-size: 0.85rem;
+    font-size: 0.85rem;              /* Links más pequeños */
   }
 }
 
 /* ── Mobile portrait (≤ 768px) ── */
 @media (max-width: 768px) {
+  /* El hamburguesa se hace visible */
   .menu-toggle {
-    display: flex;
+    display: flex;                   /* Muestra el botón hamburguesa */
   }
 
+  /* Los links se convierten en menú fullscreen */
   .nav-links {
-    position: fixed;
+    position: fixed;                 /* Cubre toda la pantalla */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: center;
-    background: var(--bg-primary);
+    width: 100%;                     /* Ancho completo */
+    height: 100vh;                   /* Alto completo de la ventana */
+    flex-direction: column;          /* Links apilados verticalmente */
+    justify-content: center;         /* Centrados verticalmente */
+    background: var(--bg-primary);   /* Fondo sólido */
     padding: 2rem;
     gap: 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease;
-    z-index: -1;
+    opacity: 0;                      /* Invisible por defecto */
+    pointer-events: none;            /* No intercepta clics cuando cerrado */
+    transition: opacity 0.35s ease;  /* Fade in/out */
+    z-index: -1;                     /* Detrás del navbar cuando cerrado */
   }
 
+  /* Menú abierto: visible e interactivo */
   .nav-links.open {
-    opacity: 1;
-    pointer-events: all;
+    opacity: 1;                      /* Visible */
+    pointer-events: all;             /* Acepta clics */
   }
 
+  /* Links más grandes en menú mobile */
   .nav-links a {
-    color: var(--text-primary);
-    font-size: 1.5rem;
-    font-weight: 600;
+    color: var(--text-primary);      /* Color principal para mayor visibilidad */
+    font-size: 1.5rem;              /* Tamaño grande para fácil toque */
+    font-weight: 600;                /* Semi-bold */
   }
 
   .nav-links li {
-    padding: 1rem 0;
+    padding: 1rem 0;                 /* Más espacio de toque entre items */
   }
 
+  /* Sin subrayado animado en mobile */
   .nav-links a::after {
-    display: none;
+    display: none;                   /* Oculta el subrayado */
   }
 
+  /* Oculta el CTA del navbar en mobile */
   .navbar .btn--cta {
     display: none;
   }
 
+  /* Logo más pequeño en mobile */
   .logo-agua,
   .logo-quim {
-    font-size: 1.1rem;
+    font-size: 1.1rem;              /* Reduce de 1.3rem a 1.1rem */
   }
 
   .logo-subtitle {
-    font-size: 0.4rem;
-    letter-spacing: 0.42em;
+    font-size: 0.4rem;              /* LABORATORIO aún más pequeño */
+    letter-spacing: 0.42em;         /* Ajusta el espaciado proporcionalmente */
   }
 }

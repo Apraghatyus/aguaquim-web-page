@@ -5,46 +5,55 @@
  * Cada página/sección usa .container para mantener ancho consistente.
  */
 
+/* ── Contenedor principal centrado ── */
 .container {
-  max-width: var(--container-max);
-  margin: 0 auto;
+  max-width: var(--container-max);   /* Ancho máximo 1200px (definido en _variables.css) */
+  margin: 0 auto;                   /* Centrado horizontal */
 }
 
+/* Variante ancha para elementos que necesitan más espacio */
 .container--wide {
-  max-width: var(--container-wide);
+  max-width: var(--container-wide);  /* Ancho máximo 1280px */
 }
 
+/* ── Padding de secciones ── */
 .section {
-  padding: var(--section-padding);
+  padding: var(--section-padding);   /* 7rem arriba/abajo, 2rem laterales */
 }
 
+/* Variante con fondo alterno (verde pálido / azul oscuro en dark) */
 .section--alt {
-  background: var(--bg-secondary);
+  background: var(--bg-secondary);   /* Fondo diferente para alternar secciones visualmente */
 }
 
+/* ── Encabezado de sección (centrado con separación inferior) ── */
 .section-header {
-  text-align: center;
-  margin-bottom: var(--section-header-mb);
+  text-align: center;                /* Texto centrado */
+  margin-bottom: var(--section-header-mb); /* 4rem de separación con el contenido */
 }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════ */
 
 /* ── Tablet landscape (≤ 1024px) ── */
 @media (max-width: 1024px) {
   .section {
-    padding: 5rem 1.5rem;
+    padding: 5rem 1.5rem;            /* Reduce padding vertical y lateral */
   }
 
   .section-header {
-    margin-bottom: 3rem;
+    margin-bottom: 3rem;             /* Menos separación del contenido */
   }
 }
 
 /* ── Mobile portrait (≤ 768px) ── */
 @media (max-width: 768px) {
   .section {
-    padding: 3.5rem 1rem;
+    padding: 3.5rem 1rem;            /* Padding compacto para móvil */
   }
 
   .section-header {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem;             /* Separación mínima */
   }
 }

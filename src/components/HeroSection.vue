@@ -5,10 +5,10 @@
   - Título grande con texto en gradiente (colores de marca)
   - Subtítulo descriptivo del laboratorio
   - Botones CTA (Call to Action) hacia servicios e inscripción
-  - Tarjetas decorativas flotantes que simulan un dashboard de calidad
+  - Slideshow rotativo de fotos del equipo AGUAQUIM
   - Formas de fondo con blur para efecto visual moderno
 
-  Estilos: _hero.css (layout grid, tarjetas flotantes, formas blur, responsive)
+  Estilos: _hero.css (layout grid, slideshow, formas blur, responsive)
   Clases globales: .text-gradient (_typography.css),
     .btn.btn--primary, .btn.btn--secondary (_buttons.css)
   Tokens: _variables.css
@@ -41,48 +41,57 @@
           <a href="#inscribete" class="btn btn--secondary">Inscríbete</a>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="visual-card card-main">
-          <div class="card-icon">💧</div>
-          <div class="card-label">Calidad del Agua</div>
-          <div class="card-value">99.8%</div>
-          <div class="card-sub">Índice de confiabilidad</div>
-        </div>
-        <div class="visual-card card-secondary">
-          <div class="card-row">
-            <span class="dot dot-green"></span>
-            <span>pH óptimo</span>
-          </div>
-          <div class="card-row">
-            <span class="dot dot-green"></span>
-            <span>Libre de coliformes</span>
-          </div>
-          <div class="card-row">
-            <span class="dot dot-green"></span>
-            <span>Cloro residual OK</span>
-          </div>
-        </div>
-        <div class="visual-card card-accent">
-          <div class="card-accent-icon">🏊</div>
-          <div>
-            <div class="card-accent-title">Análisis Piscina</div>
-            <div class="card-accent-sub">Resultados en 48h</div>
-          </div>
-        </div>
+      <!-- Slideshow rotativo del equipo AGUAQUIM -->
+      <div class="hero-slideshow">
+        <img
+          v-for="(img, i) in teamImages"
+          :key="img"
+          :src="img"
+          :alt="'Equipo AGUAQUIM ' + (i + 1)"
+          class="hero-slide"
+          :class="{ active: currentSlide === i }"
+        />
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue'
-import { useScrollAnimations } from '../hooks/useScrollAnimations.js'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { setupHeroAnimations } from '../animations'
 
-/**
- * Inicializa las animaciones del hero al montar el componente.
- * Se usa nextTick para asegurar que el DOM ya está renderizado.
+/*
+ * Imágenes del slideshow del equipo.
+ *
+ * Ubicación: public/images/team/
+ * Formato: PNG con fondo transparente, resolución recomendada ~800x600px.
+ * Nomenclatura: team-1.png, team-2.png, team-3.png, team-4.png, ...
+ *
+ * Para agregar más imágenes:
+ *   1. Colocar el archivo .png en public/images/team/
+ *   2. Añadir la ruta al array teamImages abajo
+ *   El slideshow y el intervalo se adaptan automáticamente
+ *   al tamaño del array (usa teamImages.length para el ciclo).
  */
-const anim = useScrollAnimations()
-onMounted(() => nextTick(() => setupHeroAnimations(anim)))
+const teamImages = [
+  '/images/team/team-1.png',
+  '/images/team/team-2.png',
+  '/images/team/team-3.png',
+]
+
+const currentSlide = ref(0)
+let interval = null
+
+onMounted(() => {
+  nextTick(() => setupHeroAnimations())
+
+  // Rotar imágenes cada 4 segundos
+  interval = setInterval(() => {
+    currentSlide.value = (currentSlide.value + 1) % teamImages.length
+  }, 4000)
+})
+
+onUnmounted(() => {
+  if (interval) clearInterval(interval)
+})
 </script>

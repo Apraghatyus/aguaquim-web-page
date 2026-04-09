@@ -6,127 +6,143 @@
  * y breakpoints responsive.
  */
 
+/* ── Tarjeta principal del CTA ── */
 .signup-card {
-  background: var(--color-primary);
-  border-radius: var(--radius-2xl);
-  padding: 4rem;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 3rem;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
+  background: var(--color-primary);  /* Fondo azul primario (toda la tarjeta) */
+  border-radius: var(--radius-2xl);  /* Bordes muy redondeados (28px) */
+  padding: 4rem;                     /* Espacio interno generoso */
+  display: grid;                     /* Grid de 2 columnas */
+  grid-template-columns: 1.2fr 0.8fr; /* Contenido más ancho que el visual */
+  gap: 3rem;                         /* Espacio entre contenido y visual */
+  align-items: center;               /* Centrado vertical */
+  overflow: hidden;                  /* Oculta el blob que se desborda */
+  position: relative;                /* Contexto para elementos absolutos (blob) */
 }
 
+/* Label de la sección dentro del signup */
 .signup .section-label {
-  color: var(--color-secondary-light);
+  color: var(--color-secondary-light); /* Turquesa claro sobre fondo azul */
 }
 
+/* ── Título del CTA ── */
 .signup-content h2 {
-  font-size: var(--font-size-3xl);
-  font-weight: 800;
-  color: #fff;
+  font-size: var(--font-size-3xl);   /* Tamaño grande (~2.5rem) */
+  font-weight: 800;                  /* Extra-bold */
+  color: #fff;                       /* Blanco sobre fondo azul */
   margin-bottom: 1rem;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.5px;           /* Kerning negativo para títulos */
 }
 
+/* Descripción del CTA */
 .signup-desc {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);  /* Blanco al 80% de opacidad */
   font-size: var(--font-size-lg);
   line-height: 1.7;
-  margin-bottom: 2rem;
-  max-width: 480px;
+  margin-bottom: 2rem;              /* Separación con los botones */
+  max-width: 480px;                  /* Ancho máximo para legibilidad */
 }
 
+/* Contenedor de botones (WhatsApp + Email) */
 .signup-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  display: flex;                     /* Botones en fila */
+  gap: 1rem;                         /* Espacio entre botones */
+  flex-wrap: wrap;                   /* Se envuelven si no caben */
 }
 
+/* ── Área visual decorativa (derecha) ── */
 .signup-visual {
-  position: relative;
-  display: flex;
+  position: relative;                /* Contexto para blob y badge */
+  display: flex;                     /* Centra el badge */
   align-items: center;
   justify-content: center;
-  min-height: 250px;
+  min-height: 250px;                 /* Altura mínima para el área visual */
 }
 
+/* Blob decorativo: círculo grande con gradiente radial */
 .visual-blob {
-  width: 280px;
+  width: 280px;                      /* Tamaño del blob */
   height: 280px;
-  background: radial-gradient(circle, rgba(140, 199, 196, 0.3), transparent 70%);
-  border-radius: 50%;
-  position: absolute;
+  background: radial-gradient(circle, rgba(140, 199, 196, 0.3), transparent 70%); /* Gradiente turquesa que se desvanece */
+  border-radius: 50%;                /* Forma circular */
+  position: absolute;                /* Posicionado detrás del badge */
 }
 
+/* Badge glassmorphism (ej: "🏅 Laboratorio Certificado") */
 .visual-badge {
-  position: relative;
-  z-index: 1;
-  display: flex;
+  position: relative;                /* Por encima del blob */
+  z-index: 1;                        /* Asegura que esté sobre el blob */
+  display: flex;                     /* Ícono + texto en fila */
   align-items: center;
-  gap: 1rem;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem 2rem;
+  gap: 1rem;                         /* Espacio entre ícono y texto */
+  background: rgba(255, 255, 255, 0.12); /* Fondo blanco semi-transparente */
+  backdrop-filter: blur(12px);       /* Desenfoque del fondo (glassmorphism) */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde blanco sutil */
+  border-radius: var(--radius-lg);   /* Bordes redondeados 16px */
+  padding: 1.5rem 2rem;             /* Espacio interno */
 }
 
+/* Ícono del badge (emoji o SVG) */
 .badge-icon {
-  font-size: 2rem;
+  font-size: 2rem;                   /* Tamaño grande para el emoji */
 }
 
+/* Título del badge */
 .badge-title {
-  color: #fff;
-  font-weight: 700;
+  color: #fff;                       /* Blanco */
+  font-weight: 700;                  /* Bold */
   font-size: 1rem;
 }
 
+/* Subtítulo del badge */
 .badge-sub {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.7);  /* Blanco al 70% de opacidad */
   font-size: 0.85rem;
 }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════ */
 
 /* ── Tablet landscape (≤ 1024px) ── */
 @media (max-width: 1024px) {
   .signup-card {
-    padding: 3rem 2.5rem;
+    padding: 3rem 2.5rem;            /* Padding reducido */
     gap: 2rem;
   }
 
   .signup-content h2 {
-    font-size: 2rem;
+    font-size: 2rem;                 /* Título más pequeño */
   }
 
   .signup-desc {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-base); /* Descripción en tamaño base */
   }
 
   .visual-blob {
-    width: 220px;
+    width: 220px;                    /* Blob más pequeño */
     height: 220px;
   }
 
   .visual-badge {
-    padding: 1.2rem 1.5rem;
+    padding: 1.2rem 1.5rem;          /* Badge más compacto */
   }
 }
 
 /* ── Mobile portrait (≤ 768px) ── */
 @media (max-width: 768px) {
   .signup-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;      /* Una sola columna */
     padding: 2.5rem 1.5rem;
-    text-align: center;
+    text-align: center;              /* Texto centrado */
   }
 
   .signup-actions {
-    justify-content: center;
-    flex-direction: column;
+    justify-content: center;         /* Botones centrados */
+    flex-direction: column;          /* Botones apilados */
     align-items: center;
   }
 
+  /* Oculta el área visual en mobile (no aporta en pantalla pequeña) */
   .signup-visual {
     display: none;
   }
@@ -136,6 +152,6 @@
   }
 
   .signup-desc {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-sm);  /* Descripción más compacta */
   }
 }
