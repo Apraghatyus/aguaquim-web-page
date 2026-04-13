@@ -5,8 +5,7 @@
   a contactar al laboratorio. Incluye:
   - Botón de WhatsApp con link directo (wa.me) y mensaje pre-escrito
   - Botón de correo electrónico (mailto:)
-  - Badge decorativo con información de tiempos de resultado
-  - Blob visual con efecto glassmorphism
+  - Foto del equipo con borde glassmorphism y blob decorativo de fondo
 
   Flujo de datos:
     Modelo Contact (src/models/Contact.js)
@@ -27,7 +26,7 @@
       <div class="signup-card">
         <div class="signup-content">
           <p class="section-label">Empieza hoy</p>
-          <h2>Inscríbete con nosotros</h2>
+          <h2>Contactanos</h2>
           <p class="signup-desc">
             ¿Necesitas análisis de agua para tu empresa, residencial o proyecto?
             Contáctanos y un asesor te guiará en todo el proceso.
@@ -51,14 +50,11 @@
           </div>
         </div>
         <div class="signup-visual">
-          <div class="visual-blob"></div>
-          <div class="visual-badge">
-            <span class="badge-icon">🔬</span>
-            <div>
-              <div class="badge-title">Resultados rápidos</div>
-              <div class="badge-sub">Análisis en 24-72 horas</div>
-            </div>
-          </div>
+          <img
+            class="visual-team-photo"
+            src="/images/team/team-4.png"
+            alt="Nuestro equipo de trabajo"
+          />
         </div>
       </div>
     </div>

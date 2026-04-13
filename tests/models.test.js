@@ -12,24 +12,28 @@ import { createContact } from '../src/models/Contact.js'
 
 describe('createService', () => {
   it('normaliza datos completos', () => {
-    const raw = { id: 1, icon: '🏊', title: 'Piscina', description: 'Desc', items: ['pH'] }
+    const raw = { id: 1, image: '/images/services/piscina.webp', color: '#1B8FCC', title: 'Piscina', description: 'Desc', items: ['pH'], estado_servicio: 'popular' }
     const service = createService(raw)
 
     expect(service.id).toBe(1)
-    expect(service.icon).toBe('🏊')
+    expect(service.image).toBe('/images/services/piscina.webp')
+    expect(service.color).toBe('#1B8FCC')
     expect(service.title).toBe('Piscina')
     expect(service.description).toBe('Desc')
     expect(service.items).toEqual(['pH'])
+    expect(service.estado_servicio).toBe('popular')
   })
 
   it('aplica valores por defecto cuando faltan campos', () => {
     const service = createService({})
 
     expect(service.id).toBe(0)
-    expect(service.icon).toBe('')
+    expect(service.image).toBe('')
+    expect(service.color).toBe('var(--color-primary)')
     expect(service.title).toBe('')
     expect(service.description).toBe('')
     expect(service.items).toEqual([])
+    expect(service.estado_servicio).toBeNull()
   })
 
   it('aplica valores por defecto sin argumentos', () => {

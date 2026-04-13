@@ -11,17 +11,19 @@ import { MOCK_VALUES } from '../src/mocks/about.mock.js'
 import { MOCK_CONTACT, MOCK_CONTACT_RESPONSE, MOCK_SIGNUP_RESPONSE } from '../src/mocks/contact.mock.js'
 
 describe('MOCK_SERVICES', () => {
-  it('contiene 3 servicios', () => {
-    expect(MOCK_SERVICES).toHaveLength(3)
+  it('contiene 6 servicios', () => {
+    expect(MOCK_SERVICES).toHaveLength(6)
   })
 
   it('cada servicio tiene los campos del modelo Service', () => {
     MOCK_SERVICES.forEach(service => {
       expect(service).toHaveProperty('id')
-      expect(service).toHaveProperty('icon')
+      expect(service).toHaveProperty('image')
+      expect(service).toHaveProperty('color')
       expect(service).toHaveProperty('title')
       expect(service).toHaveProperty('description')
       expect(service).toHaveProperty('items')
+      expect(service).toHaveProperty('estado_servicio')
       expect(Array.isArray(service.items)).toBe(true)
     })
   })

@@ -104,34 +104,51 @@
   box-shadow: var(--shadow-md);      /* Sombra media para destacar */
 }
 
-/* ── Header de la tarjeta (ícono + badge) ── */
-.service-card .card-header {
-  display: flex;                     /* Ícono y badge en fila */
-  align-items: center;               /* Centrados verticalmente */
-  justify-content: space-between;    /* Ícono a la izq, badge a la der */
-  margin-bottom: 1.5rem;            /* Separación con el título */
+/* ── Imagen + barra de color (edge-to-edge, parte superior del card) ── */
+.service-card__media {
+  margin: -2.5rem -2rem 1.5rem;      /* Compensa el padding del card para ir borde a borde */
+  position: relative;                  /* Contexto para el badge absoluto */
+  /* Sin overflow:hidden — el border-radius va en el img para no recortar el badge */
 }
 
-/* Contenedor del ícono con fondo coloreado */
-.card-icon-wrap {
-  width: 56px;                       /* Tamaño cuadrado */
-  height: 56px;
-  border-radius: var(--radius-lg);   /* Bordes redondeados 16px */
-  display: flex;                     /* Centra el ícono */
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;                 /* Tamaño del emoji/ícono */
+.service-card__media img {
+  width: 100%;                         /* Ocupa todo el ancho */
+  height: 180px;                       /* Altura fija para consistencia */
+  object-fit: cover;                   /* Recorta sin distorsionar */
+  display: block;                      /* Elimina espacio inferior (inline gap) */
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;  /* Redondeado solo arriba */
 }
 
-/* Fondos de color para cada ícono (varían por posición) */
-.icon-0 { background: rgba(140, 199, 196, 0.12); } /* Turquesa claro */
-.icon-1 { background: rgba(44, 104, 123, 0.1); }   /* Azul primario claro */
-.icon-2 { background: rgba(140, 199, 196, 0.12); } /* Turquesa claro */
+/* Barra de color sólido debajo de la imagen */
+.service-card__accent {
+  height: 5px;                         /* Grosor de la barra */
+}
 
-/* En dark mode los fondos de ícono son ligeramente más opacos */
-[data-theme="dark"] .icon-0 { background: rgba(140, 199, 196, 0.15); }
-[data-theme="dark"] .icon-1 { background: rgba(44, 104, 123, 0.2); }
-[data-theme="dark"] .icon-2 { background: rgba(140, 199, 196, 0.15); }
+/* ── Badge de estado sobre la imagen (Popular / Nuevo) ── */
+.service-badge {
+  position: absolute;
+  bottom: 5px;                         /* Sobre la barra de acento (5px) */
+  left: 1.25rem;
+  transform: translateY(50%);          /* La mitad sobresale sobre el contenido del card */
+  z-index: 2;
+  display: inline-block;
+  padding: 0.28rem 0.85rem;
+  border-radius: 20px;                 /* Forma píldora */
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.service-badge--popular {
+  background: #16a34a;                 /* Verde */
+}
+
+.service-badge--nuevo {
+  background: #7c3aed;                 /* Morado */
+}
 
 /* Título de la tarjeta de servicio */
 .service-card h3 {
@@ -191,6 +208,14 @@
     padding: 2rem 1.5rem;            /* Padding reducido */
   }
 
+  .service-card__media {
+    margin: -2rem -1.5rem 1.25rem;   /* Ajuste al padding reducido */
+  }
+
+  .service-card__media img {
+    height: 160px;                   /* Imagen un poco más baja */
+  }
+
   .service-card h3 {
     font-size: var(--font-size-xl);  /* Título más pequeño */
   }
@@ -216,6 +241,14 @@
     min-width: unset;                /* Quita el ancho fijo del carrusel */
     max-width: unset;
     padding: 1.8rem 1.3rem;
+  }
+
+  .services-mobile .service-card__media {
+    margin: -1.8rem -1.3rem 1.25rem; /* Ajuste al padding mobile */
+  }
+
+  .service-card__media img {
+    height: 200px;                   /* Más alta en mobile (card más ancho) */
   }
 
   .service-card h3 {

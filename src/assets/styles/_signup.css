@@ -14,7 +14,7 @@
   display: grid;                     /* Grid de 2 columnas */
   grid-template-columns: 1.2fr 0.8fr; /* Contenido más ancho que el visual */
   gap: 3rem;                         /* Espacio entre contenido y visual */
-  align-items: center;               /* Centrado vertical */
+  align-items: center;               /* Centrado vertical del contenido */
   overflow: hidden;                  /* Oculta el blob que se desborda */
   position: relative;                /* Contexto para elementos absolutos (blob) */
 }
@@ -49,54 +49,37 @@
   flex-wrap: wrap;                   /* Se envuelven si no caben */
 }
 
-/* ── Área visual decorativa (derecha) ── */
+/* ── Área visual (derecha): sangra hasta los bordes de la card ── */
 .signup-visual {
-  position: relative;                /* Contexto para blob y badge */
-  display: flex;                     /* Centra el badge */
-  align-items: center;
-  justify-content: center;
-  min-height: 250px;                 /* Altura mínima para el área visual */
+  align-self: stretch;               /* Se estira a la altura completa de la card */
+  margin: -4rem -4rem -4rem 0;       /* Compensa el padding de .signup-card (4rem) */
+  position: relative;
+  overflow: hidden;
 }
 
-/* Blob decorativo: círculo grande con gradiente radial */
-.visual-blob {
-  width: 280px;                      /* Tamaño del blob */
-  height: 280px;
-  background: radial-gradient(circle, rgba(140, 199, 196, 0.3), transparent 70%); /* Gradiente turquesa que se desvanece */
-  border-radius: 50%;                /* Forma circular */
-  position: absolute;                /* Posicionado detrás del badge */
+/* Foto del equipo: llena toda el área visual */
+.visual-team-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                 /* Recorta sin distorsionar */
+  object-position: center top;       /* ← ajusta esto si alguien queda cortado */
+  display: block;
 }
 
-/* Badge glassmorphism (ej: "🏅 Laboratorio Certificado") */
-.visual-badge {
-  position: relative;                /* Por encima del blob */
-  z-index: 1;                        /* Asegura que esté sobre el blob */
-  display: flex;                     /* Ícono + texto en fila */
-  align-items: center;
-  gap: 1rem;                         /* Espacio entre ícono y texto */
-  background: rgba(255, 255, 255, 0.12); /* Fondo blanco semi-transparente */
-  backdrop-filter: blur(12px);       /* Desenfoque del fondo (glassmorphism) */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde blanco sutil */
-  border-radius: var(--radius-lg);   /* Bordes redondeados 16px */
-  padding: 1.5rem 2rem;             /* Espacio interno */
-}
-
-/* Ícono del badge (emoji o SVG) */
-.badge-icon {
-  font-size: 2rem;                   /* Tamaño grande para el emoji */
-}
-
-/* Título del badge */
-.badge-title {
-  color: #fff;                       /* Blanco */
-  font-weight: 700;                  /* Bold */
-  font-size: 1rem;
-}
-
-/* Subtítulo del badge */
-.badge-sub {
-  color: rgba(255, 255, 255, 0.7);  /* Blanco al 70% de opacidad */
-  font-size: 0.85rem;
+/* Franja decorativa en el borde izquierdo de la foto */
+.signup-visual::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;                        /* Grosor de la franja */
+  background: linear-gradient(
+    to bottom,
+    #1B8FCC,                         /* Azul — gama Piscina */
+    #3B9B5E                          /* Verde — gama Jardinería */
+  );
+  z-index: 1;
 }
 
 /* ══════════════════════════════════════════
@@ -118,13 +101,8 @@
     font-size: var(--font-size-base); /* Descripción en tamaño base */
   }
 
-  .visual-blob {
-    width: 220px;                    /* Blob más pequeño */
-    height: 220px;
-  }
-
-  .visual-badge {
-    padding: 1.2rem 1.5rem;          /* Badge más compacto */
+  .signup-visual {
+    margin: -3rem -2.5rem -3rem 0;   /* Ajuste al padding reducido de tablet */
   }
 }
 

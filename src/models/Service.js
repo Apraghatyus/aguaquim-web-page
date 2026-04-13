@@ -5,11 +5,13 @@
  * La factory createService() normaliza datos crudos del JSON.
  *
  * @typedef {object} Service
- * @property {number}   id          - Identificador único del servicio
- * @property {string}   icon        - Emoji representativo del servicio
- * @property {string}   title       - Nombre del servicio
- * @property {string}   description - Descripción corta del servicio
- * @property {string[]} items       - Lista de parámetros incluidos en el análisis
+ * @property {number}          id              - Identificador único del servicio
+ * @property {string}          image           - Ruta a la imagen del servicio (ej: /images/services/piscina.webp)
+ * @property {string}          color           - Color de acento para la barra del card (ej: #2C687B)
+ * @property {string}          title           - Nombre del servicio
+ * @property {string}          description     - Descripción corta del servicio
+ * @property {string[]}        items           - Lista de parámetros incluidos en el análisis
+ * @property {'popular'|'nuevo'|null} estado_servicio - Badge destacado sobre la imagen; null si no aplica
  */
 
 /**
@@ -21,10 +23,12 @@
 export function createService(raw = {}) {
   return {
     id: raw.id ?? 0,
-    icon: raw.icon ?? '',
+    image: raw.image ?? '',
+    color: raw.color ?? 'var(--color-primary)',
     title: raw.title ?? '',
     description: raw.description ?? '',
-    items: Array.isArray(raw.items) ? raw.items : []
+    items: Array.isArray(raw.items) ? raw.items : [],
+    estado_servicio: raw.estado_servicio ?? null
   }
 }
 

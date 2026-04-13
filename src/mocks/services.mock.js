@@ -11,7 +11,8 @@ import { createServiceList } from '../models/Service.js'
 const RAW_SERVICES = [
   {
     id: 1,
-    icon: '🏊',
+    image: '/images/services/piscina.webp',
+    color: '#1B8FCC',
     title: 'Análisis de Piscina',
     description: 'Control y monitoreo de la calidad del agua en piscinas para cumplir con la normatividad sanitaria vigente.',
     items: [
@@ -23,7 +24,9 @@ const RAW_SERVICES = [
   },
   {
     id: 2,
-    icon: '💧',
+    image: '/images/services/agua-potable.webp',
+    color: '#2C687B',
+    estado_servicio: 'popular',
     title: 'Análisis de Agua Potable',
     description: 'Verificamos que el agua destinada al consumo humano cumpla con los parámetros de calidad establecidos.',
     items: [
@@ -35,7 +38,8 @@ const RAW_SERVICES = [
   },
   {
     id: 3,
-    icon: '📋',
+    image: '/images/services/irca.webp',
+    color: '#17A589',
     title: 'Parámetros IRCA',
     description: 'Evaluación del Índice de Riesgo de la Calidad del Agua según la normatividad colombiana.',
     items: [
@@ -47,7 +51,8 @@ const RAW_SERVICES = [
   },
   {
     id: 4,
-    icon: '🏊‍♂️',
+    image: '/images/services/capacitacion-piscina.webp',
+    color: '#3AAFB9',
     title: 'Capacitación Operarios de Piscina',
     description: 'Formación técnica para el manejo seguro y eficiente de sistemas de tratamiento de agua en piscinas.',
     items: [
@@ -59,7 +64,8 @@ const RAW_SERVICES = [
   },
   {
     id: 5,
-    icon: '🪣',
+    image: '/images/services/lavado-tanques.webp',
+    color: '#4A90A8',
     title: 'Capacitación Lavado de Tanques',
     description: 'Entrenamiento en procedimientos de limpieza y desinfección de tanques de almacenamiento de agua.',
     items: [
@@ -71,7 +77,9 @@ const RAW_SERVICES = [
   },
   {
     id: 6,
-    icon: '🌿',
+    image: '/images/services/jardineria.webp',
+    color: '#3B9B5E',
+    estado_servicio: 'nuevo',
     title: 'Asesorías de Jardinería',
     description: 'Consultoría especializada en riego, sustratos y manejo del agua para el cuidado de jardines y zonas verdes.',
     items: [

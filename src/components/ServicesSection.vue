@@ -7,11 +7,11 @@
   - En mobile (≤ 768px) se apila verticalmente sin carrusel
 
   Cada tarjeta muestra:
-  - Icono y título del servicio
+  - Título del servicio
   - Descripción del análisis
   - Lista de parámetros incluidos (con checks SVG)
   - Link "Solicitar análisis" hacia la sección de inscripción
-  - Badge "Popular" en el servicio de agua potable
+  - Badge "Popular" (verde) o "Nuevo" (morado) sobre la imagen según service.estado_servicio
 
   Flujo de datos:
     Modelo Service (src/models/Service.js)
@@ -65,13 +65,14 @@
           class="card-base card-base--lift-lg service-card"
           v-for="(service, i) in carouselItems"
           :key="'s-' + i"
-          :class="{ featured: service.id === 2 }"
+          :class="{ featured: service.estado_servicio === 'popular' }"
         >
-          <div class="card-header">
-            <div class="card-icon-wrap" :class="'icon-' + ((service.id - 1) % 3)">
-              <span class="card-icon">{{ service.icon }}</span>
-            </div>
-            <div class="card-badge" v-if="service.id === 2">Popular</div>
+          <div v-if="service.image" class="service-card__media">
+            <img :src="service.image" :alt="service.title" loading="lazy" />
+            <div class="service-card__accent" :style="{ background: service.color }"></div>
+            <span v-if="service.estado_servicio" class="service-badge" :class="'service-badge--' + service.estado_servicio">
+              {{ BADGE_LABELS[service.estado_servicio] }}
+            </span>
           </div>
           <h3>{{ service.title }}</h3>
           <p class="card-desc">{{ service.description }}</p>
@@ -96,13 +97,14 @@
         class="card-base card-base--lift-lg service-card"
         v-for="service in services"
         :key="'m-' + service.id"
-        :class="{ featured: service.id === 2 }"
+        :class="{ featured: service.estado_servicio === 'popular' }"
       >
-        <div class="card-header">
-          <div class="card-icon-wrap" :class="'icon-' + ((service.id - 1) % 3)">
-            <span class="card-icon">{{ service.icon }}</span>
-          </div>
-          <div class="card-badge" v-if="service.id === 2">Popular</div>
+        <div v-if="service.image" class="service-card__media">
+          <img :src="service.image" :alt="service.title" loading="lazy" />
+          <div class="service-card__accent" :style="{ background: service.color }"></div>
+          <span v-if="service.estado_servicio" class="service-badge" :class="'service-badge--' + service.estado_servicio">
+            {{ BADGE_LABELS[service.estado_servicio] }}
+          </span>
         </div>
         <h3>{{ service.title }}</h3>
         <p class="card-desc">{{ service.description }}</p>
@@ -128,6 +130,9 @@ import { useScrollAnimations } from '../hooks/useScrollAnimations.js'
 import { setupServicesAnimations } from '../animations'
 
 const { services, loading, error } = useServices()
+
+/** Texto visible para cada valor de estado_servicio */
+const BADGE_LABELS = { popular: 'Popular', nuevo: 'Nuevo' }
 
 /**
  * Duplica el array de servicios para loop infinito.
