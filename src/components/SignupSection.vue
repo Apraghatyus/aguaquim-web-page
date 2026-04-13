@@ -26,7 +26,7 @@
       <div class="signup-card">
         <div class="signup-content">
           <p class="section-label">Empieza hoy</p>
-          <h2>Contactanos</h2>
+          <h2>Contáctanos</h2>
           <p class="signup-desc">
             ¿Necesitas análisis de agua para tu empresa, residencial o proyecto?
             Contáctanos y un asesor te guiará en todo el proceso.
