@@ -60,21 +60,11 @@
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue'
 import { useCoverage } from '../hooks/useCoverage.js'
-import { useScrollAnimations } from '../hooks/useScrollAnimations.js'
-import { setupCoverageAnimations } from '../animations'
 
 /**
  * Consume las ciudades de cobertura desde el composable.
  * totalCities se calcula automáticamente del array para la estadística.
  */
 const { cities, totalCities, loading, error } = useCoverage()
-
-/**
- * Inicializa las animaciones de la sección Cobertura.
- * Texto primero, luego city-cards con stagger rápido.
- */
-const anim = useScrollAnimations()
-onMounted(() => nextTick(() => setupCoverageAnimations(anim)))
 </script>

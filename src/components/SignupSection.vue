@@ -14,7 +14,7 @@
     → Hook useContact() (src/hooks/useContact.js)
     → contact: Contact, whatsappUrl, mailtoUrl
 
-  Estilos: _signup.css (signup-card, blob, badge glassmorphism, responsive)
+  Estilos: _signup.css (signup-card, foto de equipo, franja decorativa, responsive)
   Clases globales: .section.section--alt, .container (_layout.css),
     .section-label (_typography.css),
     .btn.btn--wa, .btn.btn--email (_buttons.css)
@@ -62,21 +62,11 @@
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue'
 import { useContact } from '../hooks/useContact.js'
-import { useScrollAnimations } from '../hooks/useScrollAnimations.js'
-import { setupSignupAnimations } from '../animations'
 
 /**
  * Consume URLs de WhatsApp y correo desde el composable de contacto.
  * Las URLs se generan dinámicamente a partir de la info de contacto.
  */
 const { whatsappUrl, mailtoUrl } = useContact()
-
-/**
- * Inicializa las animaciones de la sección Inscríbete.
- * La tarjeta CTA aparece como un solo bloque al scroll.
- */
-const anim = useScrollAnimations()
-onMounted(() => nextTick(() => setupSignupAnimations(anim)))
 </script>
