@@ -12,9 +12,18 @@
 services:
   aguaquim-web:
     build:
-      context: .            # Contexto de build: carpeta raíz del proyecto
-      target: production     # Usa el stage 'production' del Dockerfile (Nginx)
-    container_name: aguaquim-web-prod
+      context: .
+      target: production
+    container_name: aguaquim-web
     ports:
-      - "80:80"              # Mapea puerto 80 (HTTP estándar) del contenedor al host
-    restart: unless-stopped  # Reinicia automáticamente si el contenedor se cae
+      - "8083:80"
+    volumes:
+      - ./nginx.prod.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: "0.25"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"

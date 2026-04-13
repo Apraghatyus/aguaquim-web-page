@@ -23,3 +23,5 @@ Thumbs.db
 
 # Tests
 coverage
+~syncthing~.docker-compose.prod.yml.swp.tmp
+
