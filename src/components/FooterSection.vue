@@ -47,7 +47,7 @@
             <li><a href="#quienes-somos">Quiénes somos</a></li>
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#cobertura">Cobertura</a></li>
-            <li><a href="#inscribete">Inscríbete</a></li>
+            <li><a href="#inscribete">Contáctanos</a></li>
           </ul>
         </div>
 
